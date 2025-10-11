@@ -1,0 +1,48 @@
+<applicationDocument formatStyle="modern">
+    <applicant>
+        <name>Jane Doe</name>
+        <address>
+            <street>123 Main Street</street>
+            <city>Springfield</city>
+            <state>IL</state>
+            <zipCode>62704</zipCode>
+        </address>
+        <contactInformation>
+            <phone>(555) 123-4567</phone>
+            <email>jane.doe@email.com</email>
+        </contactInformation>
+    </applicant>
+    <date>June 15, 2024</date>
+    <recipient>
+        <position>Hiring Manager</position>
+        <company>Brightwave Marketing</company>
+        <address>
+            <street>789 Market Avenue</street>
+            <city>Chicago</city>
+            <state>IL</state>
+            <zipCode>60601</zipCode>
+        </address>
+    </recipient>
+    <letter>
+        <salutation>Dear Hiring Manager,</salutation>
+        <introduction> I am writing to express my interest in the Marketing Coordinator position at
+            Brightwave Marketing, as advertised on your company website. </introduction>
+        <experienceSection>
+            <experience>
+                <employer>GreenLeaf Promotions</employer>
+                <achievements>
+                    <achievement>Managed multiple successful social media campaigns</achievement>
+                    <achievement>Contributed to brand development strategies</achievement>
+                    <achievement>Coordinated promotional events</achievement>
+                </achievements>
+            </experience>
+        </experienceSection>
+        <motivation> What excites me most about Brightwave Marketing is your commitment to creative
+            and data-driven strategies. I thrive in dynamic environments where collaboration and
+            innovation are valued. </motivation>
+        <closing> Thank you for considering my application. I welcome the opportunity to further
+            discuss how my skills and experiences align with the needs of your company. Please find
+            my resume attached. </closing>
+        <signature>Jane Doe</signature>
+    </letter>
+</applicationDocument>
