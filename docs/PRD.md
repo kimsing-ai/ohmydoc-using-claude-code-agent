@@ -14,7 +14,8 @@ A modern, browser-based real-time transformer application that allows users to e
 ### 1.3 Tech Stack
 - **Framework**: Nuxt.js (latest version via `npm create nuxt@latest`)
 - **Language**: TypeScript
-- **Styling**: Vue Scoped CSS (built-in)
+- **UI Components**: @nuxt/ui for application chrome (buttons, inputs, modals, alerts)
+- **Styling**: Vue Scoped CSS for document templates (exportable content)
 - **XML Parsing**: DOMParser (native browser API)
 - **Code Editor**: Monaco Editor via `nuxt-monaco-editor`
 
@@ -39,14 +40,14 @@ A modern, browser-based real-time transformer application that allows users to e
   - Responsive layout
 
 #### 2.1.2 Real-Time Transformation
-- **Initial State**: Application loads with `sample/cover-letter.xml` pre-populated in editor on first load
+- **Initial State**: Application loads with sample XML (`public/samples/cover-letter.xml`) pre-populated in editor on first load
 - **Instant Updates**: Changes in XML editor trigger immediate preview updates
 - **Debouncing**: Implement 300ms debounce to optimize performance
 - **Error Handling**: Display friendly error messages for invalid XML
 - **Syntax Validation**: Highlight XML syntax errors in the editor
 
 #### 2.1.3 XML Schema Support
-Based on `sample/cover-letter.xml`, the application should support the following XML structure:
+Based on `docs/sample/cover-letter.xml`, the application should support the following XML structure:
 
 ```xml
 <applicationDocument>
@@ -162,25 +163,20 @@ The application uses **Vue Single File Components (SFCs)** as templates:
 - **Professional**: Suitable for business documents
 - **Functional**: Focus on content and usability
 
-### 4.2 Color Palette
-Based on `sample/styles.css`:
-```css
---ink: #111           /* Primary text */
---muted: #555         /* Secondary text */
---accent: #0f6fec     /* Interactive elements */
---background: #fff    /* Main background */
---panel-bg: #fafafa   /* Panel backgrounds */
---border: #e5e5e5     /* Dividers */
-```
+### 4.2 Styling Strategy
 
-### 4.3 Typography
-```css
---font-body: ui-serif, Georgia, "Times New Roman", serif
---font-ui: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto
---font-mono: ui-monospace, Menlo, Monaco, "Courier New"
-```
+**Application UI**: Uses @nuxt/ui component library
+- Headers, buttons, inputs, modals, alerts
+- Consistent, accessible, professionally styled out-of-the-box
+- Theme can be customized via Nuxt config if needed
 
-### 4.4 Layout Structure
+**Document Templates**: Use scoped CSS for exportable content
+- Each template (`/templates/{name}/styles.css`) defines its own styling
+- Templates must not depend on @nuxt/ui (for standalone HTML export)
+- Color palette and typography defined per template
+- Default Modern template uses `docs/sample/styles.css` as reference
+
+### 4.3 Layout Structure
 ```
 ┌─────────────────────────────────────────────────────┐
 │  Header (App Title + Actions)                       │
@@ -202,30 +198,32 @@ Based on `sample/styles.css`:
 ```
 /pages
   index.vue                        # Main application page
+  /debug
+    parser.vue                     # XML parser demo page
+    template.vue                   # Template renderer demo page
+    editor.vue                     # Editor component demo page
+    preview.vue                    # Preview panel demo page
 /components
-  XmlEditor.vue                    # XML editor component
-  PreviewPanel.vue                 # Preview container
-  AppHeader.vue                    # App header with actions
+  XmlEditor.vue                    # XML editor (@nuxt/ui wrapper + Monaco)
+  PreviewPanel.vue                 # Preview container (@nuxt/ui wrapper)
+  AppHeader.vue                    # App header (@nuxt/ui components)
 /templates
   /modern
     CoverLetterModern.vue          # Modern template (default)
-    styles.css                     # Modern-specific styles
+    styles.css                     # Modern-specific styles (scoped CSS)
   /classic
     CoverLetterClassic.vue         # Classic template
-    styles.css                     # Classic-specific styles
+    styles.css                     # Classic-specific styles (scoped CSS)
   /minimal
     CoverLetterMinimal.vue         # Minimal template
-    styles.css                     # Minimal-specific styles
+    styles.css                     # Minimal-specific styles (scoped CSS)
 /composables
   useTemplate.ts                   # Template selection config
   useXmlParser.ts                  # XML parsing to data object
   useExport.ts                     # HTML export functionality
 /public
   samples/
-    cover-letter.xml               # Default XML template
-/assets
-  styles/
-    variables.css                  # Global CSS variables
+    cover-letter.xml               # Default XML sample (copied from docs/sample/)
 ```
 
 ### 5.2 Key Components
@@ -581,34 +579,28 @@ Vue renders HTML → PreviewPanel displays
 
 ---
 
-## 8. Development Phases
+## 8. Development Approach
 
-### 8.1 Phase 1: MVP (Week 1-2)
-- [ ] Nuxt.js project setup with TypeScript
-- [ ] Basic dual-panel layout
-- [ ] XML editor integration (Monaco via nuxt-monaco-editor)
-- [ ] XML parser composable with validation
-- [ ] Modern template component (default)
-- [ ] Real-time preview rendering with Vue
-- [ ] Pre-load sample XML on app initialization
-- [ ] Basic styling (based on sample CSS)
+This project follows an **agile MVP-based development approach**. The implementation is broken down into 12 progressive MVPs, each delivering a working, testable component.
 
-### 8.2 Phase 2: Enhancement (Week 3)
-- [ ] File import functionality
-- [ ] HTML export (rendered output only)
-- [ ] Error handling and validation UI
-- [ ] XML formatting/prettify
-- [ ] Panel resizing
-- [ ] Preview zoom controls
-- [ ] Add Classic template variant
+**See**: `docs/MVP-PLAN.md` for detailed breakdown of:
+- 12 MVPs (MVP 1: Basic App Shell → MVP 12: Accessibility & Polish)
+- Each MVP's goals, deliverables, and acceptance criteria
+- MVP dependencies and testing strategy
+- Demo pages at `/debug/*` for component testing
 
-### 8.3 Phase 3: Polish (Week 4)
-- [ ] Add Minimal template variant
-- [ ] Responsive design refinements
-- [ ] Accessibility improvements
-- [ ] Performance optimization
-- [ ] Documentation (developer guide for adding templates)
-- [ ] Deployment
+**Key Milestones**:
+- **MVP 1-5**: Foundation (parser, template, editor, preview components)
+- **MVP 6**: Integration (dual-panel main app)
+- **MVP 7-9**: Core features (export, editor actions, zoom)
+- **MVP 10-11**: Enhancement (panel resize, additional templates)
+- **MVP 12**: Production-ready (accessibility, cross-browser)
+
+**Development Principles**:
+- Each MVP is independently usable and testable
+- Components built in demo pages (MVP 2-5) are reused in main app (MVP 6)
+- Progressive enhancement: later MVPs build on earlier ones
+- Demo pages remain as documentation at `/debug/*`
 
 ---
 
@@ -670,13 +662,13 @@ Vue renders HTML → PreviewPanel displays
 ## 12. Appendix
 
 ### 12.1 Sample XML Schema Reference
-See: `sample/cover-letter.xml`
+See: `docs/sample/cover-letter.xml`
 
 ### 12.2 Sample HTML Output Reference
-See: `sample/cover-letter.html`
+See: `docs/sample/cover-letter.html` (if available)
 
 ### 12.3 Sample CSS Reference
-See: `sample/styles.css`
+See: `docs/sample/styles.css` (used as reference for Modern template)
 
 ### 12.4 Recommended Libraries
 - **Framework**: `nuxt` (latest)
@@ -750,7 +742,7 @@ const ACTIVE_TEMPLATE = 'mytemplate'; // Switch here
 
 ---
 
-**Document Version**: 2.0
-**Last Updated**: 2025-10-10
+**Document Version**: 3.0
+**Last Updated**: 2025-10-11
 **Author**: Product Team
-**Status**: Updated for Nuxt/Vue PoC → Ready for Development
+**Status**: MVP Plan Finalized → Ready for MVP 1 Implementation
