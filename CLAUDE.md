@@ -261,3 +261,7 @@ Each template defines its own styling:
 - No backend, authentication, or database
 - Browser support: Chrome/Edge/Firefox/Safari (latest 2 versions)
 - Performance target: < 100ms transformation for documents up to 50KB
+
+## Task Master AI Instructions
+**Import Task Master's development workflow commands and guidelines, treat as if import is in the main CLAUDE.md file.**
+@./.taskmaster/CLAUDE.md
