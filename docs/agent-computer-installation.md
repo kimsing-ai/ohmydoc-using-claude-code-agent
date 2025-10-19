@@ -59,6 +59,12 @@ npm install -g task-master-ai
 sudo apt install gh
 ```
 
+## clone git repo
+
+- clone the current repo with existing.. 
+	- nuxtjs accelerator (working out the box)
+	- taskmaster configurations
+
 # 20251017
 
 ```bash
