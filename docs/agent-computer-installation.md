@@ -70,3 +70,44 @@ sudo apt install gh
 ```bash
 npm install -g @playwright/mcp
 ```
+
+# 20251019
+
+```bash
+npm init playwright@latest
+# Getting started with writing end-to-end tests with Playwright:
+# Initializing project in '.'
+# ✔ Where to put your end-to-end tests? · tests
+# ✔ Add a GitHub Actions workflow? (Y/n) · true
+# ✔ Install Playwright browsers (can be done manually via 'npx playwright install')? (Y/n) · true
+# ✔ Install Playwright operating system dependencies (requires sudo / root - can be done manually via 'sudo npx playwright install-deps')? (y/N) · true
+
+# Installing Playwright Test (npm install --save-dev @playwright/test)…
+
+# added 3 packages, and audited 902 packages in 1s
+
+# 232 packages are looking for funding
+#   run `npm fund` for details
+
+# found 0 vulnerabilities
+# Installing Types (npm install --save-dev @types/node)…
+
+# added 2 packages, and audited 904 packages in 1s
+
+# 232 packages are looking for funding
+#   run `npm fund` for details
+
+# found 0 vulnerabilities
+# Writing playwright.config.ts.
+# Writing .github/workflows/playwright.yml.
+# Writing tests/example.spec.ts.
+# Writing package.json.
+# Downloading browsers (npx playwright install --with-deps)…
+# Installing dependencies...
+# Switching to root user to install dependencies...
+# [sudo] password for user1: 
+# Hit:1 https://cli.github.com/packages stable InRelease
+# Get:2 http://security.ubuntu.com/ubuntu jammy-security InRelease [129 kB]    SKIP...
+
+npx playwright install
+```
