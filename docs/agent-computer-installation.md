@@ -111,3 +111,12 @@ npm init playwright@latest
 
 npx playwright install
 ```
+
+# 20251027
+
+```bash
+sudo apt install -y jq
+
+# probably this one not gonna helpful
+sudo apt-get update && sudo apt-get install -y xvfb 
+```
