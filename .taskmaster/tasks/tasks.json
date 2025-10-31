@@ -9,7 +9,7 @@
         "testStrategy": "Verify app loads without errors, AppHeader displays with app title and empty action slots, can navigate to /debug/parser (even if empty), and @nuxt/ui components render correctly",
         "priority": "high",
         "dependencies": [],
-        "status": "pending",
+        "status": "in-progress",
         "subtasks": [
           {
             "id": 1,
@@ -17,7 +17,7 @@
             "description": "Verify existing Nuxt.js project structure and ensure @nuxt/ui module is properly configured",
             "dependencies": [],
             "details": "Verify existing Nuxt 4.1.3 project structure with components/, pages/, and public/ directories. Check that @nuxt/ui is installed and properly configured in nuxt.config.ts modules array. Verify TypeScript support is enabled. Ensure app runs without errors with npm run dev.",
-            "status": "pending",
+            "status": "done",
             "testStrategy": "Verify npm run dev starts without errors, @nuxt/ui components are available for import, Tailwind CSS integration works, and no console errors related to UI module"
           },
           {
@@ -28,7 +28,7 @@
               1
             ],
             "details": "Create components/AppHeader.vue using UContainer component from @nuxt/ui. Display app title prominently. Include empty action slots on both left side (for Format, Clear, Import buttons in MVP 8) and right side (for Export and Zoom in MVPs 7 & 9). Ensure component is responsive and follows @nuxt/ui design system. Import and use in app.vue or layout.",
-            "status": "pending",
+            "status": "done",
             "testStrategy": "Verify AppHeader displays app title correctly, UContainer renders properly, empty action slots are positioned correctly (left and right sides), header appears on all pages, and component follows @nuxt/ui styling"
           },
           {
@@ -39,7 +39,7 @@
               1
             ],
             "details": "Create pages/debug/ directory structure to support component isolation demos. Create a placeholder pages/debug/parser.vue page to verify routing works. Ensure Nuxt.js file-based routing recognizes the /debug/* pattern. Per DECISIONS.md section 'Demo Pages at /debug/*', these pages will serve as component testing and documentation.",
-            "status": "pending",
+            "status": "done",
             "testStrategy": "Verify navigation to /debug/parser works without 404 errors, routing transitions work smoothly, and nested routing functions properly for future debug pages"
           }
         ]
@@ -829,7 +829,7 @@
     ],
     "metadata": {
       "created": "2025-10-11T23:37:25.290Z",
-      "updated": "2025-10-11T23:37:25.290Z",
+      "updated": "2025-10-31T23:20:27.266Z",
       "description": "Tasks for master context"
     }
   }
