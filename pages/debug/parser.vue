@@ -42,4 +42,8 @@
 <script setup lang="ts">
 // Debug page for XML Parser (MVP 2)
 // This page demonstrates the useXmlParser composable in isolation
+
+useHead({
+  title: 'XML Parser Demo - OhMyDoc'
+});
 </script>

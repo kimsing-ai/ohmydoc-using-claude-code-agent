@@ -31,4 +31,8 @@
 <script setup lang="ts">
 // Main application page
 // This will be replaced with the dual-panel editor/preview in MVP 6
+
+useHead({
+  title: 'OhMyDoc - XML to HTML Transformer'
+});
 </script>
