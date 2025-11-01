@@ -1,22 +1,22 @@
 import { test, expect } from '@playwright/test';
 
 test.describe('MVP 1: Basic App Shell with Header and Routing', () => {
-  const baseURL = 'http://localhost:3004';
+  const baseURL = 'http://localhost:3003';
 
   test('should load the app without errors', async ({ page }) => {
-    // Navigate to the home page
-    const response = await page.goto(baseURL);
-
-    // Verify successful response
-    expect(response?.status()).toBe(200);
-
-    // Check for no console errors
+    // Set up console error listener before navigation
     const errors: string[] = [];
     page.on('console', (msg) => {
       if (msg.type() === 'error') {
         errors.push(msg.text());
       }
     });
+
+    // Navigate to the home page
+    const response = await page.goto(baseURL);
+
+    // Verify successful response
+    expect(response?.status()).toBe(200);
 
     await page.waitForLoadState('networkidle');
     expect(errors.length).toBe(0);
@@ -38,12 +38,12 @@ test.describe('MVP 1: Basic App Shell with Header and Routing', () => {
 
     // The action slots should exist in the DOM (even if not visible when empty)
     // This verifies the structure is in place for MVPs 7-9
-    const leftActions = page.locator('[class*="gap-2"]').first();
-    const rightActions = page.locator('[class*="gap-2"]').last();
+    const leftActions = page.getByTestId('header-left-actions');
+    const rightActions = page.getByTestId('header-right-actions');
 
     // Check that the slots exist in the DOM
-    await expect(leftActions).toHaveCount(1);
-    await expect(rightActions).toHaveCount(1);
+    await expect(leftActions).toBeAttached();
+    await expect(rightActions).toBeAttached();
   });
 
   test('should navigate to /debug/parser without 404', async ({ page }) => {
