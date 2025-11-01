@@ -76,6 +76,8 @@ export default defineConfig({
     command: 'npm run dev',
     url: 'http://localhost:3002',
     reuseExistingServer: !process.env.CI,
-    timeout: 120000, // 2 minutes for Nuxt to start
+    timeout: 180000, // 3 minutes for Nuxt to start in CI
+    stdout: 'pipe', // Show server output for debugging
+    stderr: 'pipe',
   },
 });
