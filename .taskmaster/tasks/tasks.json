@@ -54,7 +54,7 @@
         "dependencies": [
           1
         ],
-        "status": "in-progress",
+        "status": "review",
         "subtasks": [
           {
             "id": 1,
@@ -829,7 +829,7 @@
     ],
     "metadata": {
       "created": "2025-10-11T23:37:25.290Z",
-      "updated": "2025-11-02T15:03:17.376Z",
+      "updated": "2025-11-02T15:04:37.860Z",
       "description": "Tasks for master context"
     }
   }
