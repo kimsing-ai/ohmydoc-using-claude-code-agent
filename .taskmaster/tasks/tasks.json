@@ -9,7 +9,7 @@
         "testStrategy": "Verify app loads without errors, AppHeader displays with app title and empty action slots, can navigate to /debug/parser (even if empty), and @nuxt/ui components render correctly",
         "priority": "high",
         "dependencies": [],
-        "status": "review",
+        "status": "done",
         "subtasks": [
           {
             "id": 1,
@@ -829,7 +829,7 @@
     ],
     "metadata": {
       "created": "2025-10-11T23:37:25.290Z",
-      "updated": "2025-11-01T02:22:50.321Z",
+      "updated": "2025-11-02T14:13:59.194Z",
       "description": "Tasks for master context"
     }
   }
