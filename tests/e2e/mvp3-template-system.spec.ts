@@ -308,7 +308,7 @@ test.describe('MVP 3: Template System - Design System Compliance', () => {
     const emailLink = page.locator('a.email');
 
     // Get initial color
-    const initialColor = await emailLink.evaluate((el) => {
+    const _initialColor = await emailLink.evaluate((el) => {
       return window.getComputedStyle(el).color;
     });
 
@@ -356,7 +356,7 @@ test.describe('MVP 3: Template System - No @nuxt/ui in Template', () => {
   });
 
   test('should render template content within scoped CSS classes only', async ({ page }) => {
-    const article = page.locator('article.application-document');
+    const _article = page.locator('article.application-document');
 
     // Verify all major sections use semantic class names (not utility classes)
     await expect(page.locator('.application-header')).toBeVisible();
