@@ -2,7 +2,7 @@
   "master": {
     "tasks": [
       {
-        "id": 1,
+        "id": "1",
         "title": "Basic App Shell with Header and Routing",
         "description": "Create foundation app structure with header component and routing setup",
         "details": "Verify basic Nuxt.js app structure with app.vue or pages structure. Create components/AppHeader.vue using @nuxt/ui components (UContainer, title text). Display app title with empty action slots (left and right) for future buttons (MVPs 7-9). Configure routing to ensure navigation to /debug/* pages works. Verify @nuxt/ui module is configured in nuxt.config.ts.",
@@ -18,7 +18,8 @@
             "dependencies": [],
             "details": "Verify existing Nuxt 4.1.3 project structure with components/, pages/, and public/ directories. Check that @nuxt/ui is installed and properly configured in nuxt.config.ts modules array. Verify TypeScript support is enabled. Ensure app runs without errors with npm run dev.\n<info added on 2025-11-01T02:16:57.720Z>\nVerification completed successfully. Project structure confirmed with Nuxt 4.1.3, Vue 3.5.22, and TypeScript 5.9.3. @nuxt/ui v4.0.1 is properly configured in nuxt.config.ts modules array. Required directories (app/, composables/, public/) are present. Development server runs without errors on port 3002 with @nuxt/ui components available for import. All prerequisites for the Basic App Shell implementation are satisfied.\n</info added on 2025-11-01T02:16:57.720Z>",
             "status": "done",
-            "testStrategy": "Verify npm run dev starts without errors, @nuxt/ui components are available for import, Tailwind CSS integration works, and no console errors related to UI module"
+            "testStrategy": "Verify npm run dev starts without errors, @nuxt/ui components are available for import, Tailwind CSS integration works, and no console errors related to UI module",
+            "parentId": "undefined"
           },
           {
             "id": 2,
@@ -29,7 +30,8 @@
             ],
             "details": "Create components/AppHeader.vue using UContainer component from @nuxt/ui. Display app title prominently. Include empty action slots on both left side (for Format, Clear, Import buttons in MVP 8) and right side (for Export and Zoom in MVPs 7 & 9). Ensure component is responsive and follows @nuxt/ui design system. Import and use in app.vue or layout.\n<info added on 2025-11-01T02:17:39.840Z>\nCOMPLETED: AppHeader component successfully implemented with all requirements met. Created components/AppHeader.vue using UContainer from @nuxt/ui with \"OhMyDoc\" app title centered in header. Added left action slot for Format, Clear, Import buttons (MVP 8) and right action slot for Export and Zoom buttons (MVPs 7 & 9). Applied responsive Tailwind styling with dark mode support following @nuxt/ui design system. Integrated into app.vue with NuxtPage for routing functionality.\n</info added on 2025-11-01T02:17:39.840Z>",
             "status": "done",
-            "testStrategy": "Verify AppHeader displays app title correctly, UContainer renders properly, empty action slots are positioned correctly (left and right sides), header appears on all pages, and component follows @nuxt/ui styling"
+            "testStrategy": "Verify AppHeader displays app title correctly, UContainer renders properly, empty action slots are positioned correctly (left and right sides), header appears on all pages, and component follows @nuxt/ui styling",
+            "parentId": "undefined"
           },
           {
             "id": 3,
@@ -40,19 +42,23 @@
             ],
             "details": "Create pages/debug/ directory structure to support component isolation demos. Create a placeholder pages/debug/parser.vue page to verify routing works. Ensure Nuxt.js file-based routing recognizes the /debug/* pattern. Per DECISIONS.md section 'Demo Pages at /debug/*', these pages will serve as component testing and documentation.\n<info added on 2025-11-01T02:18:13.059Z>\nSuccessfully configured routing and debug directory structure:\n- Created pages/debug/ directory structure for component isolation demos\n- Created pages/index.vue as main landing page with navigation to debug pages\n- Created pages/debug/parser.vue placeholder page for MVP 2 XML parser testing\n- Configured Nuxt.js file-based routing to recognize /debug/* pattern\n- Added navigation links using @nuxt/ui UButton components\n- Pages follow @nuxt/ui design system with UCard and UAlert components\nAll requirements for subtask 1.3 are satisfied. Routing structure ready for future MVP component demos.\n</info added on 2025-11-01T02:18:13.059Z>",
             "status": "done",
-            "testStrategy": "Verify navigation to /debug/parser works without 404 errors, routing transitions work smoothly, and nested routing functions properly for future debug pages"
+            "testStrategy": "Verify navigation to /debug/parser works without 404 errors, routing transitions work smoothly, and nested routing functions properly for future debug pages",
+            "parentId": "undefined"
           }
-        ]
+        ],
+        "complexity": 3,
+        "recommendedSubtasks": 4,
+        "expansionPrompt": "Break down the foundational setup into discrete components: Nuxt.js project initialization, @nuxt/ui module configuration, header component creation, and routing setup. Each subtask should be independently testable."
       },
       {
-        "id": 2,
+        "id": "2",
         "title": "XML Parser Composable with Interactive Demo",
         "description": "Implement XML parsing functionality with TypeScript interfaces and create debug page for testing",
         "details": "Create composables/useXmlParser.ts with ParsedData interface matching XML schema from docs/sample/cover-letter.xml. Implement parseXml(xmlString) function using browser's native DOMParser API (DECISIONS.md: zero dependencies, fast, simple XML). Implement validateXml(xmlString) function for error handling. Create pages/debug/parser.vue with UTextarea for XML input, UButton to trigger parse, formatted JSON output display, and UAlert for validation errors. Load sample from /public/samples/cover-letter.xml on mount.",
         "testStrategy": "Test parser extracts all fields from sample XML correctly, invalid XML returns validation error with user-friendly message, demo page displays parsed data in readable format, and no console errors occur",
         "priority": "high",
         "dependencies": [
-          1
+          "1"
         ],
         "status": "done",
         "subtasks": [
@@ -63,7 +69,8 @@
             "dependencies": [],
             "details": "Create composables/useXmlParser.ts file. Review docs/sample/cover-letter.xml to understand schema structure. Define ParsedData interface with proper TypeScript types for all expected XML fields and nested objects (e.g., personal info, contact details, letter content sections). Ensure type safety throughout parsing process.",
             "status": "done",
-            "testStrategy": "Verify ParsedData interface compiles without TypeScript errors, matches expected XML schema structure from docs/sample/cover-letter.xml, and provides proper type hints in IDE"
+            "testStrategy": "Verify ParsedData interface compiles without TypeScript errors, matches expected XML schema structure from docs/sample/cover-letter.xml, and provides proper type hints in IDE",
+            "parentId": "undefined"
           },
           {
             "id": 2,
@@ -74,7 +81,8 @@
             ],
             "details": "Implement parseXml(xmlString) function in useXmlParser.ts using browser's native DOMParser API per DECISIONS.md (Decision 6: zero dependencies, fast, browser native). Extract all XML elements using querySelector/querySelectorAll, convert to JavaScript object matching ParsedData interface. Include robust error handling for malformed XML, missing fields, and edge cases. Check for 'parsererror' element to detect invalid XML.",
             "status": "done",
-            "testStrategy": "Test parser extracts all fields from docs/sample/cover-letter.xml correctly, handles malformed XML gracefully without crashes, returns ParsedData object with correct types, and provides detailed error messages"
+            "testStrategy": "Test parser extracts all fields from docs/sample/cover-letter.xml correctly, handles malformed XML gracefully without crashes, returns ParsedData object with correct types, and provides detailed error messages",
+            "parentId": "undefined"
           },
           {
             "id": 3,
@@ -85,7 +93,8 @@
             ],
             "details": "Implement validateXml(xmlString) function that checks for well-formed XML syntax using DOMParser's parsererror detection, validates expected elements exist (based on cover letter schema), and returns user-friendly error messages (not raw DOMParser errors). Handle common XML errors: unclosed tags, missing required fields, invalid characters.",
             "status": "done",
-            "testStrategy": "Verify invalid XML returns user-friendly validation errors (e.g., 'Missing closing tag for <sender>' not 'parsererror'), valid XML passes validation, and edge cases are handled gracefully"
+            "testStrategy": "Verify invalid XML returns user-friendly validation errors (e.g., 'Missing closing tag for <sender>' not 'parsererror'), valid XML passes validation, and edge cases are handled gracefully",
+            "parentId": "undefined"
           },
           {
             "id": 4,
@@ -97,7 +106,8 @@
             ],
             "details": "Create pages/debug/parser.vue using @nuxt/ui components. Add UTextarea for XML input, UButton to trigger parsing, formatted JSON output using <pre> tag with syntax highlighting or proper formatting. Use UAlert component for displaying validation errors with appropriate color/severity. Implement reactive data binding so parsing updates trigger UI updates. Handle loading states during parse operations.",
             "status": "done",
-            "testStrategy": "Verify demo page displays parsed JSON data in readable format (indented, formatted), validation errors show in UAlert with appropriate styling, parse button triggers parsing, and reactive updates work correctly"
+            "testStrategy": "Verify demo page displays parsed JSON data in readable format (indented, formatted), validation errors show in UAlert with appropriate styling, parse button triggers parsing, and reactive updates work correctly",
+            "parentId": "undefined"
           },
           {
             "id": 5,
@@ -108,19 +118,23 @@
             ],
             "details": "Copy docs/sample/cover-letter.xml to /public/samples/cover-letter.xml for runtime access. In pages/debug/parser.vue, use fetch() or $fetch() to load /samples/cover-letter.xml on component mount (onMounted). Populate textarea with loaded content. Handle loading states (show loading indicator), file not found errors (fallback message), and fetch errors gracefully.",
             "status": "done",
-            "testStrategy": "Verify sample XML loads automatically when page mounts, content appears in textarea correctly, loading state shows briefly, and error handling works if file is missing"
+            "testStrategy": "Verify sample XML loads automatically when page mounts, content appears in textarea correctly, loading state shows briefly, and error handling works if file is missing",
+            "parentId": "undefined"
           }
-        ]
+        ],
+        "complexity": 5,
+        "recommendedSubtasks": 5,
+        "expansionPrompt": "Separate the XML parsing logic from the UI demo: create TypeScript interfaces, implement core parsing functions, add validation logic, build the debug interface, and integrate with sample data. Focus on robust error handling for XML parsing edge cases."
       },
       {
-        "id": 3,
+        "id": "3",
         "title": "Template System with Modern Template Implementation",
         "description": "Create template system with Modern template using Vue SFC with scoped CSS (no @nuxt/ui in templates)",
         "details": "Create composables/useTemplate.ts with code-level template selection (ACTIVE_TEMPLATE constant - PoC has no UI dropdown per DECISIONS.md). Implement templates/modern/CoverLetterModern.vue with full structure per PRD section 5.2.3, props interface for ParsedData, and scoped CSS (or separate styles.css imported in component). Use color palette from PRD 4.2 and typography from PRD 4.3. CRITICAL: Templates must NOT use @nuxt/ui components (DECISIONS.md: templates are exportable, only scoped CSS). Create pages/debug/template.vue with hardcoded sample data.",
         "testStrategy": "Verify template renders all cover letter sections, styling matches design system (colors, typography), ONLY scoped CSS used (no @nuxt/ui in template), template accepts ParsedData props, and template is exportable as standalone HTML",
         "priority": "high",
         "dependencies": [
-          2
+          "2"
         ],
         "status": "done",
         "subtasks": [
@@ -131,7 +145,8 @@
             "dependencies": [],
             "details": "Create composables/useTemplate.ts with ACTIVE_TEMPLATE constant for code-level template switching (per DECISIONS.md Decision 4: PoC uses code-level switching, UI dropdown is post-PoC). Design template registry that maps template names to Vue components. Create getCurrentTemplate() function that returns active template component. Architecture must support future Classic and Minimal templates (MVP 11). Document how to change ACTIVE_TEMPLATE constant.",
             "status": "done",
-            "testStrategy": "Verify composable exports template selection logic, ACTIVE_TEMPLATE constant switches templates when changed, architecture is extensible for multiple templates, and documentation explains template switching process"
+            "testStrategy": "Verify composable exports template selection logic, ACTIVE_TEMPLATE constant switches templates when changed, architecture is extensible for multiple templates, and documentation explains template switching process",
+            "parentId": "undefined"
           },
           {
             "id": 2,
@@ -142,7 +157,8 @@
             ],
             "details": "Create templates/modern/ directory and CoverLetterModern.vue file. Implement full template HTML structure per PRD section 5.2.3 using semantic HTML (NOT @nuxt/ui components per DECISIONS.md Decision 2). Define props interface matching ParsedData from useXmlParser.ts. Structure includes: header with sender/recipient, date, subject, body paragraphs, signature. Use standard HTML tags: article, header, section, p, etc. NO UContainer, UButton, or other @nuxt/ui components.",
             "status": "done",
-            "testStrategy": "Verify template uses only standard HTML elements (no @nuxt/ui components), accepts ParsedData as props with correct TypeScript typing, renders all cover letter sections (header, date, subject, body, signature), and component compiles without errors"
+            "testStrategy": "Verify template uses only standard HTML elements (no @nuxt/ui components), accepts ParsedData as props with correct TypeScript typing, renders all cover letter sections (header, date, subject, body, signature), and component compiles without errors",
+            "parentId": "undefined"
           },
           {
             "id": 3,
@@ -153,7 +169,8 @@
             ],
             "details": "Add <style scoped> section in CoverLetterModern.vue OR create templates/modern/styles.css and import it. Use color palette from PRD section 4.2 and typography from PRD section 4.3. Style must be scoped CSS only - NO @nuxt/ui classes, NO Tailwind utility classes (per DECISIONS.md: templates must be exportable as standalone HTML). Apply professional cover letter styling: proper margins, line heights, font families, section spacing. Consider wrapping content in a class like 'cover-letter-modern' for scoping.",
             "status": "done",
-            "testStrategy": "Verify styling matches design system (colors from PRD 4.2, typography from PRD 4.3), uses ONLY scoped CSS (no @nuxt/ui, no Tailwind utilities), visual appearance is professional, and styles are exportable (work in standalone HTML without external dependencies)"
+            "testStrategy": "Verify styling matches design system (colors from PRD 4.2, typography from PRD 4.3), uses ONLY scoped CSS (no @nuxt/ui, no Tailwind utilities), visual appearance is professional, and styles are exportable (work in standalone HTML without external dependencies)",
+            "parentId": "undefined"
           },
           {
             "id": 4,
@@ -166,7 +183,8 @@
             ],
             "details": "Update composables/useTemplate.ts to import CoverLetterModern component and register it in template registry with key 'modern'. Set ACTIVE_TEMPLATE = 'modern' as default. Implement getCurrentTemplate() to return Modern template when selected. Add template metadata (name, description) for future template selection UI.",
             "status": "done",
-            "testStrategy": "Verify Modern template is registered in template system, getCurrentTemplate() returns Modern component when ACTIVE_TEMPLATE is 'modern', template can be imported and rendered successfully, and changing ACTIVE_TEMPLATE switches templates"
+            "testStrategy": "Verify Modern template is registered in template system, getCurrentTemplate() returns Modern component when ACTIVE_TEMPLATE is 'modern', template can be imported and rendered successfully, and changing ACTIVE_TEMPLATE switches templates",
+            "parentId": "undefined"
           },
           {
             "id": 5,
@@ -177,19 +195,23 @@
             ],
             "details": "Create pages/debug/template.vue with hardcoded sample data object matching ParsedData interface (sender info, recipient info, date, subject, body paragraphs, signature). Import and use getCurrentTemplate() from useTemplate.ts composable. Render template using dynamic component with sample data as props. Include comprehensive test data covering all template sections, edge cases (long names, multiple paragraphs), and various data scenarios. Use @nuxt/ui for page chrome (page layout, container) but NOT in template itself.",
             "status": "done",
-            "testStrategy": "Verify debug page loads without errors, Modern template renders with hardcoded sample data, all template sections display correctly (header, date, subject, body, signature), sample data matches ParsedData interface, and page demonstrates template capabilities effectively"
+            "testStrategy": "Verify debug page loads without errors, Modern template renders with hardcoded sample data, all template sections display correctly (header, date, subject, body, signature), sample data matches ParsedData interface, and page demonstrates template capabilities effectively",
+            "parentId": "undefined"
           }
-        ]
+        ],
+        "complexity": 6,
+        "recommendedSubtasks": 6,
+        "expansionPrompt": "Divide into template architecture design, composable creation, Modern template component implementation, comprehensive styling system, debug page creation, and integration testing. Ensure the template system is extensible for future templates."
       },
       {
-        "id": 4,
+        "id": "4",
         "title": "Monaco XML Editor Component",
         "description": "Create reusable Monaco editor wrapper component for XML editing (used in MVP 6 main app)",
         "details": "Install nuxt-monaco-editor dependency per DECISIONS.md Decision 8 (Monaco is VS Code's editor with XML support built-in). Configure Monaco in nuxt.config.ts. Create components/XmlEditor.vue as reusable Monaco wrapper with XML language support, v-model two-way binding (props: modelValue string, emits: update:modelValue, error). Configure editor features: line numbers, auto-indent, XML syntax highlighting, IntelliSense. Create pages/debug/editor.vue to test component in isolation (load sample XML, show editor stats like line/char count) before using in main app (MVP 6).\n<info added on 2025-11-03T22:08:10.805Z>\nCOMPLETION SUMMARY:\n\nTask 4 has been successfully completed and is ready for review. All implementation objectives have been achieved:\n\n✅ XmlEditor.vue component created with full v-model support and XML-specific Monaco configuration\n✅ All editor features implemented: line numbers, auto-indent, syntax highlighting, IntelliSense, bracket matching, auto-closing tags\n✅ Debug page (/debug/editor) built for component isolation testing with sample XML auto-loading and real-time statistics\n✅ All subtasks (4.1-4.4) completed and validated\n✅ Code linting passes for all new files\n✅ Pull request created: https://github.com/kimsing-ai/ohmydoc-using-claude-code-agent/pull/12\n\nTESTING VALIDATION COMPLETE:\n- Monaco editor loads without errors\n- XML syntax highlighting working correctly\n- v-model two-way binding confirmed (Clear/Reset buttons update stats reactively)\n- Line numbers and auto-indentation functional\n- Component is reusable for MVP 6 integration\n- No runtime errors in console\n\nThe XmlEditor component is production-ready and follows all architectural patterns from CLAUDE.md. Component is ready for integration into MVP 6 main application.\n</info added on 2025-11-03T22:08:10.805Z>",
         "testStrategy": "Verify Monaco editor loads without errors, XML syntax highlighting works, can type and edit content reactively, v-model binding updates parent component, line numbers and auto-indentation enabled, and editor is reusable (will be used in MVP 6 main app)",
         "priority": "medium",
         "dependencies": [
-          1
+          "1"
         ],
         "status": "done",
         "subtasks": [
@@ -200,7 +222,8 @@
             "dependencies": [],
             "details": "Install nuxt-monaco-editor package via npm (check latest compatible version for Nuxt 4.1.3). Add 'nuxt-monaco-editor' to modules array in nuxt.config.ts. Configure Monaco settings: enable XML language support, set default theme (vs-dark or vs-light), configure basic editor options (fontSize, wordWrap, minimap settings). Per DECISIONS.md Decision 8, Monaco provides XML syntax highlighting and IntelliSense out-of-the-box.",
             "status": "done",
-            "testStrategy": "Verify npm install completes successfully, nuxt.config.ts has monaco-editor module configured, app runs without errors (npm run dev), and Monaco module is available for import in components"
+            "testStrategy": "Verify npm install completes successfully, nuxt.config.ts has monaco-editor module configured, app runs without errors (npm run dev), and Monaco module is available for import in components",
+            "parentId": "undefined"
           },
           {
             "id": 2,
@@ -211,7 +234,8 @@
             ],
             "details": "Create components/XmlEditor.vue. Define props: modelValue (string) for v-model binding. Define emits: update:modelValue (string) for two-way binding, error (string) for error events. Use Vue 3 Composition API (setup script). Import Monaco editor component from nuxt-monaco-editor. Handle Monaco editor instance creation, content synchronization (modelValue → Monaco, Monaco changes → emit update:modelValue), and proper cleanup on unmount. Configure editor height/width props for flexibility.",
             "status": "done",
-            "testStrategy": "Verify component accepts modelValue prop, emits update:modelValue when content changes, v-model two-way binding works reactively (parent ← → XmlEditor), editor instance is created/destroyed properly, and no memory leaks on component unmount"
+            "testStrategy": "Verify component accepts modelValue prop, emits update:modelValue when content changes, v-model two-way binding works reactively (parent ← → XmlEditor), editor instance is created/destroyed properly, and no memory leaks on component unmount",
+            "parentId": "undefined"
           },
           {
             "id": 3,
@@ -222,7 +246,8 @@
             ],
             "details": "In XmlEditor.vue, configure Monaco editor options: language set to 'xml', line numbers enabled (lineNumbers: 'on'), auto-indentation enabled (autoIndent: 'full'), XML syntax highlighting (automatic with language: 'xml'), tab size (tabSize: 2 for XML), word wrap options. Enable IntelliSense features for XML (bracket matching, auto-closing tags). Set editor theme consistent with app design (consider light/dark mode if applicable).",
             "status": "done",
-            "testStrategy": "Verify XML syntax highlighting colors tags/attributes/values correctly, line numbers display on left side, auto-indentation works when pressing Enter in XML tags, XML-specific features work (auto-close tags, bracket matching), and editor is visually consistent with app"
+            "testStrategy": "Verify XML syntax highlighting colors tags/attributes/values correctly, line numbers display on left side, auto-indentation works when pressing Enter in XML tags, XML-specific features work (auto-close tags, bracket matching), and editor is visually consistent with app",
+            "parentId": "undefined"
           },
           {
             "id": 4,
@@ -233,22 +258,26 @@
             ],
             "details": "Create pages/debug/editor.vue for component isolation testing (per DECISIONS.md: demo pages test components before main app integration). Import XmlEditor component. Load sample XML from /samples/cover-letter.xml on mount using fetch. Use v-model to bind editor content to reactive ref. Display editor statistics below editor: current line count, character count, word count (demonstrates v-model reactivity). Use @nuxt/ui for page chrome (layout, container) but editor is the focus. Add basic controls like 'Reset to Sample' button.",
             "status": "done",
-            "testStrategy": "Verify debug page loads without errors, XmlEditor component renders correctly, sample XML loads on mount and displays in editor, editor statistics update reactively as user types, v-model binding works (typing updates stats), and editor is functional for all editing operations"
+            "testStrategy": "Verify debug page loads without errors, XmlEditor component renders correctly, sample XML loads on mount and displays in editor, editor statistics update reactively as user types, v-model binding works (typing updates stats), and editor is functional for all editing operations",
+            "parentId": "undefined"
           }
-        ]
+        ],
+        "complexity": 4,
+        "recommendedSubtasks": 4,
+        "expansionPrompt": "Break into Monaco editor dependency setup, wrapper component creation with v-model implementation, XML syntax highlighting configuration, and debug page integration. Focus on proper event handling and editor configuration."
       },
       {
-        "id": 5,
+        "id": "5",
         "title": "Preview Panel Component with Error Handling",
         "description": "Create preview component integrating XML parser (MVP 2) and template system (MVP 3) with error handling",
         "details": "Create components/PreviewPanel.vue - this is the integration point combining useXmlParser (MVP 2) and useTemplate (MVP 3). Props: xmlContent (string), zoom (number, default 1). Parse XML using useXmlParser, get template via useTemplate, render template with parsed data. Critical: Handle errors gracefully with UAlert (@nuxt/ui) for invalid XML - must NOT crash. Apply CSS transform scale based on zoom prop. Create pages/debug/preview.vue with dropdown to select test XMLs: valid sample, invalid syntax, empty XML, missing required fields (edge cases). This component will be reused in MVP 6 main app.",
         "testStrategy": "Verify preview renders template correctly with valid XML, invalid XML displays user-friendly error in UAlert without crashing, zoom prop scales preview (75%-150%), component handles edge cases gracefully (empty XML, missing fields), error messages are helpful, and component is reusable for MVP 6",
         "priority": "medium",
         "dependencies": [
-          2,
-          3
+          "2",
+          "3"
         ],
-        "status": "review",
+        "status": "done",
         "subtasks": [
           {
             "id": 1,
@@ -257,7 +286,8 @@
             "dependencies": [],
             "details": "Create components/PreviewPanel.vue using Vue 3 Composition API. Define props interface: xmlContent (type: string, required: true), zoom (type: number, default: 1). Set up component template with container div for preview rendering. Define reactive data: parsedData (holds ParsedData object from parser), error (holds error message string), isLoading (boolean for parse state). Use proper TypeScript typing for all props and reactive data.",
             "status": "done",
-            "testStrategy": "Verify component accepts xmlContent and zoom props with correct types, default zoom value is 1, reactive data properties are initialized correctly, and TypeScript compilation succeeds without errors"
+            "testStrategy": "Verify component accepts xmlContent and zoom props with correct types, default zoom value is 1, reactive data properties are initialized correctly, and TypeScript compilation succeeds without errors",
+            "parentId": "undefined"
           },
           {
             "id": 2,
@@ -268,7 +298,8 @@
             ],
             "details": "Import useXmlParser from composables/useXmlParser.ts (MVP 2) and useTemplate from composables/useTemplate.ts (MVP 3). In watchEffect or computed, parse xmlContent prop using parseXml() function. Store result in parsedData reactive ref. Use getCurrentTemplate() from useTemplate to get active template component. Set up error handling: catch parsing errors and store in error ref. When xmlContent prop changes, re-parse automatically. Ensure data flow: xmlContent → parseXml → parsedData → template component props.",
             "status": "done",
-            "testStrategy": "Verify XML parsing triggers when xmlContent changes, parsedData updates with correct ParsedData structure, template component is retrieved from useTemplate, errors are caught and stored in error ref, and reactive updates work correctly"
+            "testStrategy": "Verify XML parsing triggers when xmlContent changes, parsedData updates with correct ParsedData structure, template component is retrieved from useTemplate, errors are caught and stored in error ref, and reactive updates work correctly",
+            "parentId": "undefined"
           },
           {
             "id": 3,
@@ -279,7 +310,8 @@
             ],
             "details": "Use Vue's <component :is=\"template\"> dynamic component to render template from useTemplate. Pass parsedData as props to template component. Apply CSS transform: scale(zoom) to preview container div. Use transform-origin: top left to anchor scaling. Wrap template rendering in container with proper overflow handling. Handle cases where parsedData or template is undefined (show loading state or placeholder). Ensure zoom scaling is smooth and maintains layout (no content overflow or clipping).",
             "status": "done",
-            "testStrategy": "Verify template renders with parsed data as props, zoom scaling works at all levels (0.75, 1, 1.25, 1.5), content scales smoothly without layout breaks, transform origin keeps content anchored correctly, and undefined data/template is handled gracefully"
+            "testStrategy": "Verify template renders with parsed data as props, zoom scaling works at all levels (0.75, 1, 1.25, 1.5), content scales smoothly without layout breaks, transform origin keeps content anchored correctly, and undefined data/template is handled gracefully",
+            "parentId": "undefined"
           },
           {
             "id": 4,
@@ -290,7 +322,8 @@
             ],
             "details": "Wrap XML parsing in try-catch blocks. When error occurs, set error ref with user-friendly message (not raw DOMParser error). Use @nuxt/ui UAlert component to display error: red/error color, icon, clear message (e.g., 'Invalid XML: Missing closing tag' not 'parsererror'). Handle different error types: malformed XML syntax, missing required fields, unexpected structure. When error state is active, show UAlert instead of template. When valid XML is provided after error, clear error state and show template. Ensure component never crashes - all errors caught and displayed.",
             "status": "done",
-            "testStrategy": "Verify invalid XML syntax shows UAlert with error message, component doesn't crash on malformed input, error messages are user-friendly (not technical parser errors), UAlert styling is appropriate (red/error color), component recovers when valid XML provided, and all error scenarios are handled"
+            "testStrategy": "Verify invalid XML syntax shows UAlert with error message, component doesn't crash on malformed input, error messages are user-friendly (not technical parser errors), UAlert styling is appropriate (red/error color), component recovers when valid XML provided, and all error scenarios are handled",
+            "parentId": "undefined"
           },
           {
             "id": 5,
@@ -301,20 +334,25 @@
             ],
             "details": "Create pages/debug/preview.vue for component isolation testing. Add dropdown (use @nuxt/ui USelect) with test XML options: (1) Valid sample XML, (2) Invalid syntax (unclosed tag), (3) Empty XML, (4) Missing required fields (e.g., no sender info), (5) Extra/unexpected fields. Store selected XML in reactive ref, pass to PreviewPanel via xmlContent prop. Display parse status below preview (success/error, field count). Show current zoom level with zoom controls (buttons: 75%, 100%, 125%, 150%). Use @nuxt/ui for page chrome. Demonstrates PreviewPanel handles all scenarios gracefully before using in MVP 6.",
             "status": "done",
-            "testStrategy": "Verify dropdown loads with all test XML options, selecting different samples updates PreviewPanel correctly, valid XML renders template successfully, invalid XMLs show appropriate UAlert errors, edge cases (empty, missing fields) are handled gracefully, zoom controls work, and parse status displays accurately"
+            "testStrategy": "Verify dropdown loads with all test XML options, selecting different samples updates PreviewPanel correctly, valid XML renders template successfully, invalid XMLs show appropriate UAlert errors, edge cases (empty, missing fields) are handled gracefully, zoom controls work, and parse status displays accurately",
+            "parentId": "undefined"
           }
-        ]
+        ],
+        "complexity": 5,
+        "recommendedSubtasks": 5,
+        "expansionPrompt": "Separate into preview component structure, XML parsing integration, template rendering logic, comprehensive error handling implementation, and debug page with test cases. Emphasize robust error states and user feedback.",
+        "updatedAt": "2025-11-03T23:21:50.847Z"
       },
       {
-        "id": 6,
+        "id": "6",
         "title": "Dual-Panel Integration with Real-Time Updates",
         "description": "Main app page integrating all MVPs 1-5: complete XML editing workflow with 300ms debounced real-time preview",
         "details": "Create main pages/index.vue - this is where all MVPs 1-5 come together for the first complete end-to-end workflow. Dual-panel layout (CSS Grid or Flexbox, 50/50 split): left panel uses XmlEditor (MVP 4), right panel uses PreviewPanel (MVP 5 which uses parser MVP 2 and templates MVP 3). Wire v-model from editor to preview with 300ms debounce per DECISIONS.md Decision 5 (< 500ms threshold, smooth UX). Load sample XML from /public/samples/cover-letter.xml on mount. Update AppHeader (MVP 1) with app title, tagline, and empty action slots (left for MVP 8, right for MVPs 7 & 9). Minimum 1024px responsive. This completes core editing workflow - MVPs 7-12 are enhancements.",
         "testStrategy": "Verify dual-panel 50/50 layout, sample XML auto-loads in editor and preview, typing in editor updates preview after 300ms debounce (not immediate, not laggy), invalid XML shows UAlert error in preview (doesn't crash), no layout shift/flicker during updates, responsive works at 1024px minimum, and end-to-end workflow works (edit XML → see live preview)",
         "priority": "high",
         "dependencies": [
-          4,
-          5
+          "4",
+          "5"
         ],
         "status": "pending",
         "subtasks": [
@@ -325,7 +363,8 @@
             "dependencies": [],
             "details": "Create pages/index.vue as main application page. Implement dual-panel layout using CSS Grid (grid-template-columns: 1fr 1fr) or Flexbox (display: flex with flex: 1 on each child). Ensure equal 50/50 split by default. Set minimum width constraint (1024px total, 512px per panel minimum). Add container divs for left panel (editor) and right panel (preview) with proper styling. Ensure responsive behavior - on smaller screens, consider stacking or scrolling. Use @nuxt/ui UContainer for page wrapper if needed.",
             "status": "pending",
-            "testStrategy": "Verify dual-panel layout renders with equal 50/50 split, panels maintain proportions, minimum width is enforced (1024px total), layout is responsive, and no horizontal scrolling occurs at design width"
+            "testStrategy": "Verify dual-panel layout renders with equal 50/50 split, panels maintain proportions, minimum width is enforced (1024px total), layout is responsive, and no horizontal scrolling occurs at design width",
+            "parentId": "undefined"
           },
           {
             "id": 2,
@@ -336,7 +375,8 @@
             ],
             "details": "Import XmlEditor component from components/XmlEditor.vue (built in MVP 4) into pages/index.vue. Import PreviewPanel component from components/PreviewPanel.vue (built in MVP 5). Place XmlEditor in left panel div, PreviewPanel in right panel div. Set up reactive ref for XML content (e.g., xmlContent = ref('')). Pass xmlContent to PreviewPanel as xmlContent prop. Initially leave components unconnected - will wire v-model in next subtask. Ensure both components render without errors.",
             "status": "pending",
-            "testStrategy": "Verify XmlEditor renders in left panel, PreviewPanel renders in right panel, both components load without errors, and layout accommodates both components properly without overflow"
+            "testStrategy": "Verify XmlEditor renders in left panel, PreviewPanel renders in right panel, both components load without errors, and layout accommodates both components properly without overflow",
+            "parentId": "undefined"
           },
           {
             "id": 3,
@@ -347,7 +387,8 @@
             ],
             "details": "Set up v-model binding on XmlEditor component to xmlContent ref. Implement 300ms debounce using Vue's watchDebounced (from @vueuse/core if available) or manual implementation with ref + watch + setTimeout. Debounced flow: editor changes → wait 300ms → update preview. Pass debounced xmlContent to PreviewPanel. This prevents re-parsing on every keystroke (per DECISIONS.md Decision 5: 300ms < 500ms threshold, smooth UX without lag). Test with rapid typing - preview should update smoothly 300ms after typing stops, not on every keystroke.",
             "status": "pending",
-            "testStrategy": "Verify typing in editor triggers preview update after 300ms (not immediate, not longer), rapid typing doesn't cause multiple updates (only updates after typing pauses), preview updates are smooth without flicker, debounce timing feels instant to user, and performance is good with large XML"
+            "testStrategy": "Verify typing in editor triggers preview update after 300ms (not immediate, not longer), rapid typing doesn't cause multiple updates (only updates after typing pauses), preview updates are smooth without flicker, debounce timing feels instant to user, and performance is good with large XML",
+            "parentId": "undefined"
           },
           {
             "id": 4,
@@ -358,7 +399,8 @@
             ],
             "details": "In pages/index.vue onMounted hook, use fetch() or $fetch() to load /samples/cover-letter.xml (served from /public/samples/ at runtime). Set xmlContent ref with loaded content. This will automatically populate XmlEditor (via v-model) and trigger preview rendering (via PreviewPanel prop). Handle loading state (show loading indicator while fetching), file not found errors (show error message with fallback to empty editor), and network errors gracefully. Ensure async loading doesn't block page render.",
             "status": "pending",
-            "testStrategy": "Verify sample XML loads automatically when page mounts, editor populates with XML content, preview renders template immediately, loading state shows briefly during fetch, error handling works if file is missing, and page renders even if fetch fails"
+            "testStrategy": "Verify sample XML loads automatically when page mounts, editor populates with XML content, preview renders template immediately, loading state shows briefly during fetch, error handling works if file is missing, and page renders even if fetch fails",
+            "parentId": "undefined"
           },
           {
             "id": 5,
@@ -367,7 +409,8 @@
             "dependencies": [],
             "details": "Update components/AppHeader.vue (created in MVP 1). Add app title (e.g., 'OhMyDoc v2 - XML to HTML Transformer') and tagline. Create empty action button slots: left side slot (will hold Format, Clear, Import buttons in MVP 8) and right side slot (will hold Export in MVP 7 and Zoom in MVP 9). Use @nuxt/ui UContainer for layout, flexbox for slot positioning. Style with @nuxt/ui design system. Document where future buttons will go. Header should be responsive and appear on all pages.",
             "status": "pending",
-            "testStrategy": "Verify AppHeader displays app title and tagline correctly, empty action slots are positioned on left and right sides, slots are ready for future button components, header styling matches @nuxt/ui design, header appears on main page and debug pages, and responsive behavior works"
+            "testStrategy": "Verify AppHeader displays app title and tagline correctly, empty action slots are positioned on left and right sides, slots are ready for future button components, header styling matches @nuxt/ui design, header appears on main page and debug pages, and responsive behavior works",
+            "parentId": "undefined"
           },
           {
             "id": 6,
@@ -379,19 +422,23 @@
             ],
             "details": "Test complete workflow: (1) Page loads with sample XML, (2) Editor shows XML, (3) Preview renders template, (4) User edits XML, (5) Preview updates after 300ms, (6) Invalid XML shows error. Test at different screen sizes (1024px minimum, 1920px desktop). Test with various XML: small (sample), large (many paragraphs), invalid (syntax errors), edge cases (empty, missing fields). Optimize: ensure 300ms debounce isn't too aggressive (allow tuning if needed), check memory usage with repeated edits, verify no layout shift during updates. This completes core editing workflow - MVPs 7-12 add enhancements.",
             "status": "pending",
-            "testStrategy": "Verify end-to-end workflow works: load → edit → preview updates after 300ms → error handling, responsive layout works at 1024px+ widths, performance is smooth with large XML files, no layout shift/flicker during updates, memory usage is stable with repeated edits, and user experience feels polished"
+            "testStrategy": "Verify end-to-end workflow works: load → edit → preview updates after 300ms → error handling, responsive layout works at 1024px+ widths, performance is smooth with large XML files, no layout shift/flicker during updates, memory usage is stable with repeated edits, and user experience feels polished",
+            "parentId": "undefined"
           }
-        ]
+        ],
+        "complexity": 7,
+        "recommendedSubtasks": 6,
+        "expansionPrompt": "Break into layout implementation, component integration, real-time update system with debouncing, sample data loading, header updates, and responsive design testing. Focus on smooth user experience and performance optimization."
       },
       {
-        "id": 7,
+        "id": "7",
         "title": "HTML Export Functionality",
         "description": "Implement HTML export feature to download rendered template as standalone file",
         "details": "Create composables/useExport.ts with exportHtml(previewElementId, templateName) function. Extract rendered HTML from preview element, extract scoped CSS from template (excluding @nuxt/ui styles), generate standalone HTML document with embedded CSS, and trigger download with proper filename. Update AppHeader.vue to add 'Export HTML' UButton on right side. Update pages/index.vue to add ref to preview element and connect export button to useExport composable.",
         "testStrategy": "Verify export button appears in header, clicking button downloads HTML file, downloaded HTML opens in browser correctly, CSS is embedded with no external dependencies, HTML is properly formatted and valid, and only template CSS is included (no @nuxt/ui styles)",
         "priority": "medium",
         "dependencies": [
-          6
+          "6"
         ],
         "status": "pending",
         "subtasks": [
@@ -402,7 +449,8 @@
             "dependencies": [],
             "details": "Set up the main composable file with TypeScript interfaces for export parameters. Implement the core exportHtml function signature that will orchestrate the entire export process. Include proper error handling and validation for input parameters.",
             "status": "pending",
-            "testStrategy": "Verify composable can be imported, exportHtml function exists with correct parameters, and basic validation works for invalid inputs"
+            "testStrategy": "Verify composable can be imported, exportHtml function exists with correct parameters, and basic validation works for invalid inputs",
+            "parentId": "undefined"
           },
           {
             "id": 2,
@@ -413,7 +461,8 @@
             ],
             "details": "Use document.getElementById or querySelector to find the preview element by ID. Extract the innerHTML content and clean up any unnecessary attributes or elements. Ensure the extracted HTML maintains proper structure and formatting for standalone use.",
             "status": "pending",
-            "testStrategy": "Verify HTML is correctly extracted from preview element, content matches what's displayed, and extracted HTML is properly formatted"
+            "testStrategy": "Verify HTML is correctly extracted from preview element, content matches what's displayed, and extracted HTML is properly formatted",
+            "parentId": "undefined"
           },
           {
             "id": 3,
@@ -424,7 +473,8 @@
             ],
             "details": "Parse document stylesheets to identify template-specific CSS rules. Filter out @nuxt/ui styles and other framework CSS. Extract only the scoped styles relevant to the template content. Process CSS to ensure it works in standalone HTML without external dependencies.",
             "status": "pending",
-            "testStrategy": "Verify only template CSS is extracted, @nuxt/ui styles are excluded, extracted CSS maintains proper scoping, and styles work in standalone HTML"
+            "testStrategy": "Verify only template CSS is extracted, @nuxt/ui styles are excluded, extracted CSS maintains proper scoping, and styles work in standalone HTML",
+            "parentId": "undefined"
           },
           {
             "id": 4,
@@ -435,7 +485,8 @@
             ],
             "details": "Generate a complete HTML5 document structure with DOCTYPE, html, head, and body tags. Embed the extracted CSS in a style tag within the head section. Insert the extracted HTML content in the body. Ensure proper meta tags and character encoding for browser compatibility.",
             "status": "pending",
-            "testStrategy": "Verify generated HTML is valid HTML5, CSS is properly embedded, document opens correctly in browsers, and no external dependencies are required"
+            "testStrategy": "Verify generated HTML is valid HTML5, CSS is properly embedded, document opens correctly in browsers, and no external dependencies are required",
+            "parentId": "undefined"
           },
           {
             "id": 5,
@@ -446,19 +497,23 @@
             ],
             "details": "Create blob from generated HTML and trigger download with proper filename based on templateName. Update AppHeader.vue to add 'Export HTML' UButton on the right side. Update pages/index.vue to add ref to preview element and connect the export button to the useExport composable.",
             "status": "pending",
-            "testStrategy": "Verify export button appears in header, clicking downloads HTML file with correct filename, downloaded file opens properly in browser, and UI integration works seamlessly"
+            "testStrategy": "Verify export button appears in header, clicking downloads HTML file with correct filename, downloaded file opens properly in browser, and UI integration works seamlessly",
+            "parentId": "undefined"
           }
-        ]
+        ],
+        "complexity": 6,
+        "recommendedSubtasks": 5,
+        "expansionPrompt": "Divide into export composable creation, HTML extraction logic, CSS processing and embedding, file download implementation, and UI integration. Focus on generating clean, standalone HTML files with proper CSS isolation."
       },
       {
-        "id": 8,
+        "id": "8",
         "title": "Editor Actions (Format, Clear, Import)",
         "description": "Implement complete editor toolbar functionality with format, clear, and import features",
         "details": "Add 'Format' button in AppHeader left side actions to implement XML prettify/auto-indent logic and update editor content. Add 'Clear' button with UModal confirmation dialog to clear editor content on confirm. Add 'Import' button with UInput type='file' for XML file picker, validate file type (.xml), and load file content into editor. All buttons use @nuxt/ui components with proper error handling for invalid files.",
         "testStrategy": "Verify format button prettifies XML correctly, clear button shows confirmation before clearing, import button opens file picker accepting only .xml files, imported file loads into editor correctly, all buttons use @nuxt/ui components, and error handling works for invalid files",
         "priority": "medium",
         "dependencies": [
-          6
+          "6"
         ],
         "status": "pending",
         "subtasks": [
@@ -469,7 +524,8 @@
             "dependencies": [],
             "details": "Add Format button to AppHeader left side actions using UButton component. Implement XML prettify logic using DOMParser to parse XML and XMLSerializer to format with proper indentation. Handle XML parsing errors gracefully and provide user feedback for invalid XML.",
             "status": "pending",
-            "testStrategy": "Test format button prettifies valid XML with proper indentation, handles invalid XML with error messages, and updates editor content correctly"
+            "testStrategy": "Test format button prettifies valid XML with proper indentation, handles invalid XML with error messages, and updates editor content correctly",
+            "parentId": "undefined"
           },
           {
             "id": 2,
@@ -478,7 +534,8 @@
             "dependencies": [],
             "details": "Add Clear button to AppHeader using UButton component. Create confirmation modal using UModal with warning message and confirm/cancel actions. On confirm, clear the editor content and close modal. On cancel, just close modal without clearing.",
             "status": "pending",
-            "testStrategy": "Verify clear button opens confirmation modal, confirm action clears editor content, cancel action preserves content, and modal uses proper @nuxt/ui styling"
+            "testStrategy": "Verify clear button opens confirmation modal, confirm action clears editor content, cancel action preserves content, and modal uses proper @nuxt/ui styling",
+            "parentId": "undefined"
           },
           {
             "id": 3,
@@ -487,7 +544,8 @@
             "dependencies": [],
             "details": "Add Import button to AppHeader using UButton component. Implement file picker using UInput type='file' with accept='.xml' attribute. Validate selected file type and size, read file content using FileReader API, and load content into editor with proper error handling.",
             "status": "pending",
-            "testStrategy": "Test import button opens file picker accepting only .xml files, valid XML files load into editor correctly, invalid file types show error messages, and large files are handled appropriately"
+            "testStrategy": "Test import button opens file picker accepting only .xml files, valid XML files load into editor correctly, invalid file types show error messages, and large files are handled appropriately",
+            "parentId": "undefined"
           },
           {
             "id": 4,
@@ -500,7 +558,8 @@
             ],
             "details": "Create error handling system for format, clear, and import actions. Use UAlert components to display error messages for XML parsing failures, file read errors, and validation issues. Implement try-catch blocks around all operations with specific error messages for different failure scenarios.",
             "status": "pending",
-            "testStrategy": "Verify appropriate error messages display for invalid XML formatting, file import failures, and other edge cases without crashing the application"
+            "testStrategy": "Verify appropriate error messages display for invalid XML formatting, file import failures, and other edge cases without crashing the application",
+            "parentId": "undefined"
           },
           {
             "id": 5,
@@ -514,7 +573,8 @@
             ],
             "details": "Integrate Format, Clear, and Import buttons into AppHeader left side actions using consistent @nuxt/ui styling. Add loading states during operations, success notifications using UNotification, and ensure proper button spacing and accessibility. Connect all actions to the Monaco editor component.",
             "status": "pending",
-            "testStrategy": "Test all buttons render correctly in AppHeader, loading states work during operations, success/error notifications appear appropriately, and UI remains responsive during all actions"
+            "testStrategy": "Test all buttons render correctly in AppHeader, loading states work during operations, success/error notifications appear appropriately, and UI remains responsive during all actions",
+            "parentId": "undefined"
           },
           {
             "id": 6,
@@ -529,19 +589,23 @@
             ],
             "details": "Test all editor actions with various XML files including valid, invalid, empty, and large files. Verify format button works with malformed XML, clear confirmation prevents accidental data loss, import handles different file encodings, and all error scenarios provide helpful user feedback.",
             "status": "pending",
-            "testStrategy": "Execute comprehensive test suite covering all editor actions, edge cases, error scenarios, and user interaction flows to ensure reliable functionality across different use cases"
+            "testStrategy": "Execute comprehensive test suite covering all editor actions, edge cases, error scenarios, and user interaction flows to ensure reliable functionality across different use cases",
+            "parentId": "undefined"
           }
-        ]
+        ],
+        "complexity": 5,
+        "recommendedSubtasks": 6,
+        "expansionPrompt": "Break into XML formatting logic, clear functionality with confirmation, file import system, error handling for each action, UI integration, and comprehensive testing. Ensure each action provides appropriate user feedback."
       },
       {
-        "id": 9,
+        "id": "9",
         "title": "Preview Zoom Controls",
         "description": "Add zoom functionality for preview panel with multiple zoom levels",
         "details": "Update AppHeader.vue to add zoom controls on right side with export button. Implement zoom levels: 75%, 100%, 125%, 150% using @nuxt/ui button group or dropdown. Update pages/index.vue to add zoom state (ref) and pass zoom to PreviewPanel component. Optionally persist zoom level to localStorage for user preference.",
         "testStrategy": "Verify zoom controls appear in header right side, clicking zoom level scales preview immediately, all zoom levels work (75%, 100%, 125%, 150%), current zoom level is visually indicated, preview content scales without layout break, and optionally zoom persists across page reloads",
         "priority": "low",
         "dependencies": [
-          6
+          "6"
         ],
         "status": "pending",
         "subtasks": [
@@ -552,7 +616,8 @@
             "dependencies": [],
             "details": "Update AppHeader.vue to add zoom controls on the right side using @nuxt/ui button group or dropdown. Implement zoom levels: 75%, 100%, 125%, 150%. Position controls next to export button and ensure proper styling and layout.",
             "status": "pending",
-            "testStrategy": "Verify zoom controls appear in header right side, all zoom levels are clickable, and current zoom level is visually indicated"
+            "testStrategy": "Verify zoom controls appear in header right side, all zoom levels are clickable, and current zoom level is visually indicated",
+            "parentId": "undefined"
           },
           {
             "id": 2,
@@ -563,7 +628,8 @@
             ],
             "details": "Update pages/index.vue to add zoom state using ref() with default value of 100%. Create methods to handle zoom level changes and pass zoom value to PreviewPanel component as prop.",
             "status": "pending",
-            "testStrategy": "Verify zoom state updates correctly when controls are clicked and zoom value is properly passed to PreviewPanel component"
+            "testStrategy": "Verify zoom state updates correctly when controls are clicked and zoom value is properly passed to PreviewPanel component",
+            "parentId": "undefined"
           },
           {
             "id": 3,
@@ -574,7 +640,8 @@
             ],
             "details": "Update PreviewPanel component to accept zoom prop and apply CSS transform scale to preview content. Ensure smooth scaling transitions and maintain layout integrity without breaking content positioning.",
             "status": "pending",
-            "testStrategy": "Verify preview content scales correctly for all zoom levels (75%, 100%, 125%, 150%), scaling is smooth with transitions, and layout remains intact"
+            "testStrategy": "Verify preview content scales correctly for all zoom levels (75%, 100%, 125%, 150%), scaling is smooth with transitions, and layout remains intact",
+            "parentId": "undefined"
           },
           {
             "id": 4,
@@ -585,19 +652,23 @@
             ],
             "details": "Add localStorage functionality to save and restore zoom level preference. Update zoom state management to load saved zoom level on component mount and save changes to localStorage when zoom level changes.",
             "status": "pending",
-            "testStrategy": "Verify zoom level persists across page reloads, localStorage is updated when zoom changes, and default zoom is used when no saved preference exists"
+            "testStrategy": "Verify zoom level persists across page reloads, localStorage is updated when zoom changes, and default zoom is used when no saved preference exists",
+            "parentId": "undefined"
           }
-        ]
+        ],
+        "complexity": 3,
+        "recommendedSubtasks": 4,
+        "expansionPrompt": "Separate into zoom control UI implementation, zoom state management, preview scaling logic, and optional localStorage persistence. Focus on smooth scaling transitions and maintaining layout integrity."
       },
       {
-        "id": 10,
+        "id": "10",
         "title": "Panel Resizing with Draggable Divider",
         "description": "Implement draggable divider between editor and preview panels for custom sizing",
         "details": "Install and use splitpanes npm package or implement custom CSS resize with drag handle. Update pages/index.vue to add resizable split between editor and preview with draggable divider to adjust widths. Enforce minimum widths (e.g., 30% each panel). Optionally persist panel sizes to localStorage for user preference.",
         "testStrategy": "Verify divider is visible and draggable, dragging resizes both panels smoothly, minimum widths are enforced, Monaco editor resizes correctly, preview content reflows properly, and optionally sizes persist across reloads",
         "priority": "low",
         "dependencies": [
-          6
+          "6"
         ],
         "status": "pending",
         "subtasks": [
@@ -608,7 +679,8 @@
             "dependencies": [],
             "details": "Run npm install splitpanes to add the library. Import Splitpanes and Pane components in pages/index.vue. Configure basic splitpanes setup with two panes for editor and preview panels. Ensure proper CSS imports for splitpanes styling.",
             "status": "pending",
-            "testStrategy": "Verify splitpanes library is installed correctly, components import without errors, and basic split layout renders with two panels"
+            "testStrategy": "Verify splitpanes library is installed correctly, components import without errors, and basic split layout renders with two panels",
+            "parentId": "undefined"
           },
           {
             "id": 2,
@@ -619,7 +691,8 @@
             ],
             "details": "Configure splitpanes with draggable divider handle. Implement smooth resizing animation and ensure proper event handling for drag operations. Add visual feedback for the divider (hover states, cursor changes). Handle Monaco editor resize events to ensure proper redraw during panel resizing.",
             "status": "pending",
-            "testStrategy": "Test divider is visible and draggable, resizing is smooth without lag, Monaco editor resizes correctly during drag operations, and visual feedback works properly"
+            "testStrategy": "Test divider is visible and draggable, resizing is smooth without lag, Monaco editor resizes correctly during drag operations, and visual feedback works properly",
+            "parentId": "undefined"
           },
           {
             "id": 3,
@@ -630,7 +703,8 @@
             ],
             "details": "Set minimum width constraints of 30% for each panel using splitpanes min-size property. Implement validation to prevent users from dragging panels below minimum thresholds. Add visual indicators when minimum limits are reached. Ensure constraints work properly on different screen sizes.",
             "status": "pending",
-            "testStrategy": "Verify panels cannot be resized below 30% width, constraints work on different screen sizes, visual feedback shows when limits are reached, and layout remains functional at minimum sizes"
+            "testStrategy": "Verify panels cannot be resized below 30% width, constraints work on different screen sizes, visual feedback shows when limits are reached, and layout remains functional at minimum sizes",
+            "parentId": "undefined"
           },
           {
             "id": 4,
@@ -641,19 +715,23 @@
             ],
             "details": "Create localStorage integration to save panel sizes when user adjusts divider. Implement logic to restore saved panel sizes on page load. Add error handling for localStorage access issues. Provide fallback to default 50/50 split if no saved preferences exist or localStorage is unavailable.",
             "status": "pending",
-            "testStrategy": "Test panel sizes persist across browser reloads, localStorage saves and retrieves sizes correctly, fallback works when localStorage is disabled, and no errors occur with localStorage operations"
+            "testStrategy": "Test panel sizes persist across browser reloads, localStorage saves and retrieves sizes correctly, fallback works when localStorage is disabled, and no errors occur with localStorage operations",
+            "parentId": "undefined"
           }
-        ]
+        ],
+        "complexity": 4,
+        "recommendedSubtasks": 4,
+        "expansionPrompt": "Break into splitpanes library integration, drag handle implementation, minimum width constraints, and optional persistence. Focus on smooth resizing behavior and proper Monaco editor resize handling."
       },
       {
-        "id": 11,
+        "id": "11",
         "title": "Additional Templates (Classic & Minimal)",
         "description": "Create Classic and Minimal templates to demonstrate template extensibility",
         "details": "Create templates/classic/CoverLetterClassic.vue with different HTML structure (table-based layout) and templates/classic/styles.css. Create templates/minimal/CoverLetterMinimal.vue with minimal HTML structure (plain divs) and templates/minimal/styles.css. Update composables/useTemplate.ts to import and register new templates with documentation on changing ACTIVE_TEMPLATE constant. Update /debug/template page with dropdown to switch between templates or show all three side-by-side.",
         "testStrategy": "Verify Classic template renders with different HTML structure, Minimal template renders with simpler structure, all templates use same Props interface, changing ACTIVE_TEMPLATE switches template in main app, each template has own scoped CSS, /debug/template page demonstrates all templates, and documentation is updated for template switching",
         "priority": "low",
         "dependencies": [
-          3
+          "3"
         ],
         "status": "pending",
         "subtasks": [
@@ -666,7 +744,8 @@
             ],
             "details": "Create templates/classic/CoverLetterClassic.vue with table-based HTML structure for header, body sections, and footer. Implement props interface matching ParsedData from task 3. Create templates/classic/styles.css with scoped styling for table layout, maintaining professional appearance with proper spacing and typography.",
             "status": "pending",
-            "testStrategy": "Verify Classic template renders with table structure, accepts ParsedData props correctly, displays all cover letter sections properly, and styling is scoped without conflicts"
+            "testStrategy": "Verify Classic template renders with table structure, accepts ParsedData props correctly, displays all cover letter sections properly, and styling is scoped without conflicts",
+            "parentId": "undefined"
           },
           {
             "id": 2,
@@ -677,7 +756,8 @@
             ],
             "details": "Create templates/minimal/CoverLetterMinimal.vue with simple div-based HTML structure, minimal styling approach. Implement same props interface as other templates. Create templates/minimal/styles.css with clean, minimal styling focusing on readability and whitespace.",
             "status": "pending",
-            "testStrategy": "Verify Minimal template renders with simple div structure, maintains readability with minimal styling, accepts same props interface, and demonstrates different visual approach"
+            "testStrategy": "Verify Minimal template renders with simple div structure, maintains readability with minimal styling, accepts same props interface, and demonstrates different visual approach",
+            "parentId": "undefined"
           },
           {
             "id": 3,
@@ -688,7 +768,8 @@
             ],
             "details": "Update composables/useTemplate.ts to import and register Classic and Minimal templates alongside Modern template. Add template registry with metadata (name, description, component). Update ACTIVE_TEMPLATE constant documentation. Ensure template switching functionality works across all three templates.",
             "status": "pending",
-            "testStrategy": "Verify all three templates are registered correctly, ACTIVE_TEMPLATE constant switches between templates, template metadata is accessible, and no breaking changes to existing Modern template"
+            "testStrategy": "Verify all three templates are registered correctly, ACTIVE_TEMPLATE constant switches between templates, template metadata is accessible, and no breaking changes to existing Modern template",
+            "parentId": "undefined"
           },
           {
             "id": 4,
@@ -701,7 +782,8 @@
             ],
             "details": "Update pages/debug/template.vue to include dropdown selection for switching between Modern, Classic, and Minimal templates. Add option to display all three templates side-by-side for comparison. Maintain existing hardcoded sample data functionality.",
             "status": "pending",
-            "testStrategy": "Verify dropdown allows switching between all templates, side-by-side view displays all templates correctly, sample data renders properly in each template, and UI is intuitive for template comparison"
+            "testStrategy": "Verify dropdown allows switching between all templates, side-by-side view displays all templates correctly, sample data renders properly in each template, and UI is intuitive for template comparison",
+            "parentId": "undefined"
           },
           {
             "id": 5,
@@ -713,23 +795,27 @@
             ],
             "details": "Create comprehensive documentation explaining template system architecture, how to change ACTIVE_TEMPLATE constant, template creation guidelines, and props interface requirements. Include examples of each template's unique characteristics and use cases.",
             "status": "pending",
-            "testStrategy": "Verify documentation covers all template system aspects, ACTIVE_TEMPLATE change instructions are clear, template creation guidelines are comprehensive, and examples demonstrate proper usage"
+            "testStrategy": "Verify documentation covers all template system aspects, ACTIVE_TEMPLATE change instructions are clear, template creation guidelines are comprehensive, and examples demonstrate proper usage",
+            "parentId": "undefined"
           }
-        ]
+        ],
+        "complexity": 4,
+        "recommendedSubtasks": 5,
+        "expansionPrompt": "Divide into Classic template creation, Minimal template creation, template system updates, debug page enhancements, and documentation updates. Ensure each template demonstrates different layout approaches while maintaining consistency."
       },
       {
-        "id": 12,
+        "id": "12",
         "title": "Accessibility & Cross-Browser Polish",
         "description": "Implement WCAG AA compliance, keyboard navigation, and cross-browser compatibility",
         "details": "Implement keyboard navigation with logical tab order (header → editor → preview), keyboard shortcuts (e.g., Ctrl+S to export), and focus management with visible focus indicators. Add ARIA labels to buttons, aria-live to error messages, and screen reader announcements for preview updates. Verify all text meets WCAG AA contrast ratio and adjust colors if needed. Test on Chrome, Firefox, Safari and fix browser-specific issues. Add polyfills if needed. Optimize performance with lazy loading Monaco, code splitting for debug pages, and bundle size optimization.",
         "testStrategy": "Verify keyboard navigation works (tab order, shortcuts), all interactive elements have aria-labels, focus indicators are visible, color contrast meets WCAG AA, screen reader can navigate and use app, no console errors in any browser, app works on Chrome/Firefox/Safari (latest 2 versions), Lighthouse accessibility score > 95, and performance optimized with load time < 2s",
         "priority": "medium",
         "dependencies": [
-          7,
-          8,
-          9,
-          10,
-          11
+          "7",
+          "8",
+          "9",
+          "10",
+          "11"
         ],
         "status": "pending",
         "subtasks": [
@@ -740,7 +826,8 @@
             "dependencies": [],
             "details": "Implement keyboard navigation with logical tab order (header → editor → preview). Add tabindex attributes where needed, ensure focus moves in logical sequence, and implement keyboard shortcuts like Ctrl+S for export functionality.",
             "status": "pending",
-            "testStrategy": "Test tab navigation follows logical flow, keyboard shortcuts work correctly, and all interactive elements are reachable via keyboard"
+            "testStrategy": "Test tab navigation follows logical flow, keyboard shortcuts work correctly, and all interactive elements are reachable via keyboard",
+            "parentId": "undefined"
           },
           {
             "id": 2,
@@ -751,7 +838,8 @@
             ],
             "details": "Add ARIA labels to all buttons and interactive elements, implement aria-live regions for error messages and dynamic content updates, and add screen reader announcements for preview updates and state changes.",
             "status": "pending",
-            "testStrategy": "Test with screen reader software to ensure all elements are properly announced and interactive"
+            "testStrategy": "Test with screen reader software to ensure all elements are properly announced and interactive",
+            "parentId": "undefined"
           },
           {
             "id": 3,
@@ -762,7 +850,8 @@
             ],
             "details": "Implement visible focus indicators for all interactive elements, manage focus state during navigation and modal interactions, and ensure focus is properly trapped in modal dialogs when applicable.",
             "status": "pending",
-            "testStrategy": "Verify focus indicators are clearly visible and focus management works correctly during user interactions"
+            "testStrategy": "Verify focus indicators are clearly visible and focus management works correctly during user interactions",
+            "parentId": "undefined"
           },
           {
             "id": 4,
@@ -771,7 +860,8 @@
             "dependencies": [],
             "details": "Audit all text colors against background colors to ensure 4.5:1 contrast ratio for normal text and 3:1 for large text. Adjust color palette values if needed to meet WCAG AA standards while maintaining design consistency.",
             "status": "pending",
-            "testStrategy": "Use automated tools to verify contrast ratios meet WCAG AA standards across all UI elements"
+            "testStrategy": "Use automated tools to verify contrast ratios meet WCAG AA standards across all UI elements",
+            "parentId": "undefined"
           },
           {
             "id": 5,
@@ -784,7 +874,8 @@
             ],
             "details": "Test application functionality on Chrome, Firefox, and Safari (latest 2 versions). Identify and fix browser-specific CSS and JavaScript issues. Add polyfills for missing browser features if needed.",
             "status": "pending",
-            "testStrategy": "Verify app works identically across Chrome, Firefox, and Safari with no console errors or visual inconsistencies"
+            "testStrategy": "Verify app works identically across Chrome, Firefox, and Safari with no console errors or visual inconsistencies",
+            "parentId": "undefined"
           },
           {
             "id": 6,
@@ -793,7 +884,8 @@
             "dependencies": [],
             "details": "Implement lazy loading for Monaco editor, add code splitting for debug pages, optimize bundle size, and implement performance monitoring. Focus on reducing initial load time and improving runtime performance.",
             "status": "pending",
-            "testStrategy": "Use Lighthouse to verify performance scores improve and measure bundle size reduction"
+            "testStrategy": "Use Lighthouse to verify performance scores improve and measure bundle size reduction",
+            "parentId": "undefined"
           },
           {
             "id": 7,
@@ -806,7 +898,8 @@
             ],
             "details": "Run automated accessibility testing tools, conduct manual testing with keyboard-only navigation, test with screen readers, and validate semantic HTML structure. Document and fix any compliance issues found.",
             "status": "pending",
-            "testStrategy": "Use axe-core and manual testing to ensure full WCAG AA compliance with zero violations"
+            "testStrategy": "Use axe-core and manual testing to ensure full WCAG AA compliance with zero violations",
+            "parentId": "undefined"
           },
           {
             "id": 8,
@@ -822,15 +915,23 @@
             ],
             "details": "Conduct end-to-end accessibility testing with real users, document accessibility features and keyboard shortcuts, create accessibility statement, and perform final validation across all browsers and assistive technologies.",
             "status": "pending",
-            "testStrategy": "Complete accessibility audit with real assistive technology users and document all accessibility features"
+            "testStrategy": "Complete accessibility audit with real assistive technology users and document all accessibility features",
+            "parentId": "undefined"
           }
-        ]
+        ],
+        "complexity": 8,
+        "recommendedSubtasks": 8,
+        "expansionPrompt": "Break into keyboard navigation implementation, ARIA labels and screen reader support, WCAG compliance testing and fixes, cross-browser compatibility testing, performance optimization, focus management, color contrast validation, and comprehensive accessibility testing. This requires systematic testing across multiple dimensions."
       }
     ],
     "metadata": {
-      "created": "2025-10-11T23:37:25.290Z",
-      "updated": "2025-11-03T22:36:31.092Z",
-      "description": "Tasks for master context"
+      "version": "1.0.0",
+      "lastModified": "2025-11-03T23:21:50.848Z",
+      "taskCount": 12,
+      "completedCount": 5,
+      "tags": [
+        "master"
+      ]
     }
   }
 }
