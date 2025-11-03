@@ -1,10 +1,16 @@
 import { defineConfig, devices } from '@playwright/test';
+import dotenv from 'dotenv';
+
+// Load environment variables from .env file
+dotenv.config();
 
 /**
  * Playwright configuration for E2E tests against deployed environments.
  *
  * Usage:
- *   DEPLOYED_URL=https://your-app.vercel.app npx playwright test --config=playwright.e2e.config.ts
+ *   npm run test:e2e  (reads DEPLOYED_URL from .env)
+ *   OR
+ *   DEPLOYED_URL=https://your-app.vercel.app npm run test:e2e  (override .env)
  *
  * See https://playwright.dev/docs/test-configuration.
  */
