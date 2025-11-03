@@ -1,0 +1,219 @@
+/**
+ * Modern Template Styles
+ *
+ * Professional cover letter styling using the design system from PRD.md
+ * Color palette (PRD 4.2): --ink: #111, --muted: #555, --accent: #0f6fec
+ * Typography (PRD 4.3): --font-body: ui-serif, --font-ui: ui-sans-serif
+ *
+ * This stylesheet uses ONLY scoped CSS (no @nuxt/ui, no Tailwind utilities)
+ * to ensure the template is exportable as standalone HTML.
+ */
+
+/* CSS Custom Properties (Design System) */
+:root {
+  --font-body: ui-serif, Georgia, "Times New Roman", Times, serif;
+  --font-ui: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  --max-width: 720px;
+  --ink: #111;
+  --muted: #555;
+  --accent: #0f6fec;
+  --gap: 0.9rem;
+  --gap-lg: 1.25rem;
+  --line: 1.6;
+}
+
+/* Base Styles */
+* {
+  box-sizing: border-box;
+}
+
+/* Application Document Container */
+.application-document {
+  margin: 0 auto;
+  max-width: var(--max-width);
+  background: #fff;
+  color: var(--ink);
+  font: 16px/var(--line) var(--font-body);
+  padding: 2rem 1rem;
+}
+
+/* Application Header */
+.application-header {
+  display: grid;
+  gap: var(--gap);
+  margin-bottom: var(--gap-lg);
+}
+
+.applicant-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* Applicant Name */
+.applicant-name {
+  font-family: var(--font-ui);
+  font-size: clamp(1.4rem, 2vw + 1rem, 2rem);
+  line-height: 1.2;
+  margin: 0 0 0.25rem 0;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+/* Address Styling */
+.applicant-address,
+.recipient-address {
+  font-style: normal;
+  color: var(--muted);
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Contact Information */
+.contact-information {
+  font-family: var(--font-ui);
+  color: var(--muted);
+  margin: 0.25rem 0 0 0;
+  font-size: 0.95rem;
+}
+
+.contact-information .phone {
+  color: inherit;
+}
+
+.contact-information .separator {
+  margin: 0 0.5rem;
+  color: var(--muted);
+}
+
+.contact-information .email {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px dotted currentColor;
+  transition: color 0.2s ease;
+}
+
+.contact-information .email:hover {
+  color: var(--accent);
+}
+
+/* Document Date */
+.document-date {
+  margin: var(--gap) 0;
+  color: var(--muted);
+  font-family: var(--font-ui);
+  font-size: 0.95rem;
+}
+
+/* Recipient Section */
+.recipient {
+  margin-top: 0.25rem;
+  margin-bottom: var(--gap-lg);
+}
+
+.recipient-position {
+  margin: 0 0 0.1rem 0;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.recipient-company {
+  margin: 0.1rem 0 0.2rem 0;
+  font-family: var(--font-ui);
+  color: var(--ink);
+}
+
+/* Letter Content */
+.letter {
+  margin-top: var(--gap-lg);
+}
+
+.letter > p {
+  margin: 0 0 1rem 0;
+  line-height: var(--line);
+}
+
+/* Salutation */
+.salutation {
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+
+/* Introduction */
+.introduction {
+  margin-bottom: 1rem;
+}
+
+/* Experience Section */
+.experience-section {
+  margin: 1rem 0;
+}
+
+.experience {
+  margin-bottom: 1rem;
+}
+
+.experience-employer {
+  margin: 0 0 0.25rem 0;
+  color: var(--ink);
+}
+
+.experience-employer strong {
+  font-weight: 600;
+}
+
+/* Achievements List */
+.achievements {
+  margin: 0.25rem 0 1rem 1.5rem;
+  padding: 0;
+  list-style-type: disc;
+}
+
+.achievement {
+  margin: 0.2rem 0;
+  line-height: var(--line);
+  color: var(--ink);
+}
+
+/* Motivation */
+.motivation {
+  margin-bottom: 1rem;
+}
+
+/* Closing */
+.closing {
+  margin-bottom: 1rem;
+}
+
+/* Signature */
+.signature {
+  margin-top: 2.5rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+/* Print Optimization */
+@media print {
+  .application-document {
+    padding: 0;
+    max-width: none;
+    margin: 0 2cm;
+  }
+
+  .contact-information .email {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: none;
+  }
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+  .application-document {
+    padding: 1rem 0.75rem;
+  }
+
+  .applicant-name {
+    font-size: 1.5rem;
+  }
+}
