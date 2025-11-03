@@ -122,7 +122,7 @@
         "dependencies": [
           2
         ],
-        "status": "pending",
+        "status": "review",
         "subtasks": [
           {
             "id": 1,
@@ -130,7 +130,7 @@
             "description": "Design useTemplate.ts composable for template selection with ACTIVE_TEMPLATE constant (no UI dropdown in PoC)",
             "dependencies": [],
             "details": "Create composables/useTemplate.ts with ACTIVE_TEMPLATE constant for code-level template switching (per DECISIONS.md Decision 4: PoC uses code-level switching, UI dropdown is post-PoC). Design template registry that maps template names to Vue components. Create getCurrentTemplate() function that returns active template component. Architecture must support future Classic and Minimal templates (MVP 11). Document how to change ACTIVE_TEMPLATE constant.",
-            "status": "pending",
+            "status": "done",
             "testStrategy": "Verify composable exports template selection logic, ACTIVE_TEMPLATE constant switches templates when changed, architecture is extensible for multiple templates, and documentation explains template switching process"
           },
           {
@@ -141,7 +141,7 @@
               1
             ],
             "details": "Create templates/modern/ directory and CoverLetterModern.vue file. Implement full template HTML structure per PRD section 5.2.3 using semantic HTML (NOT @nuxt/ui components per DECISIONS.md Decision 2). Define props interface matching ParsedData from useXmlParser.ts. Structure includes: header with sender/recipient, date, subject, body paragraphs, signature. Use standard HTML tags: article, header, section, p, etc. NO UContainer, UButton, or other @nuxt/ui components.",
-            "status": "pending",
+            "status": "done",
             "testStrategy": "Verify template uses only standard HTML elements (no @nuxt/ui components), accepts ParsedData as props with correct TypeScript typing, renders all cover letter sections (header, date, subject, body, signature), and component compiles without errors"
           },
           {
@@ -152,7 +152,7 @@
               2
             ],
             "details": "Add <style scoped> section in CoverLetterModern.vue OR create templates/modern/styles.css and import it. Use color palette from PRD section 4.2 and typography from PRD section 4.3. Style must be scoped CSS only - NO @nuxt/ui classes, NO Tailwind utility classes (per DECISIONS.md: templates must be exportable as standalone HTML). Apply professional cover letter styling: proper margins, line heights, font families, section spacing. Consider wrapping content in a class like 'cover-letter-modern' for scoping.",
-            "status": "pending",
+            "status": "done",
             "testStrategy": "Verify styling matches design system (colors from PRD 4.2, typography from PRD 4.3), uses ONLY scoped CSS (no @nuxt/ui, no Tailwind utilities), visual appearance is professional, and styles are exportable (work in standalone HTML without external dependencies)"
           },
           {
@@ -165,7 +165,7 @@
               3
             ],
             "details": "Update composables/useTemplate.ts to import CoverLetterModern component and register it in template registry with key 'modern'. Set ACTIVE_TEMPLATE = 'modern' as default. Implement getCurrentTemplate() to return Modern template when selected. Add template metadata (name, description) for future template selection UI.",
-            "status": "pending",
+            "status": "done",
             "testStrategy": "Verify Modern template is registered in template system, getCurrentTemplate() returns Modern component when ACTIVE_TEMPLATE is 'modern', template can be imported and rendered successfully, and changing ACTIVE_TEMPLATE switches templates"
           },
           {
@@ -176,7 +176,7 @@
               4
             ],
             "details": "Create pages/debug/template.vue with hardcoded sample data object matching ParsedData interface (sender info, recipient info, date, subject, body paragraphs, signature). Import and use getCurrentTemplate() from useTemplate.ts composable. Render template using dynamic component with sample data as props. Include comprehensive test data covering all template sections, edge cases (long names, multiple paragraphs), and various data scenarios. Use @nuxt/ui for page chrome (page layout, container) but NOT in template itself.",
-            "status": "pending",
+            "status": "done",
             "testStrategy": "Verify debug page loads without errors, Modern template renders with hardcoded sample data, all template sections display correctly (header, date, subject, body, signature), sample data matches ParsedData interface, and page demonstrates template capabilities effectively"
           }
         ]
@@ -829,7 +829,7 @@
     ],
     "metadata": {
       "created": "2025-10-11T23:37:25.290Z",
-      "updated": "2025-11-03T17:27:00.474Z",
+      "updated": "2025-11-03T18:31:26.999Z",
       "description": "Tasks for master context"
     }
   }
