@@ -1,0 +1,411 @@
+
+> test:e2e
+> playwright test --config=playwright.e2e.config.ts
+
+
+Running 115 tests using 12 workers
+
+[1A[2K[1/115] [chromium] › tests/e2e/mvp1-enhanced-coverage.spec.ts:93:3 › MVP 1: Enhanced Test Coverage - Accessibility & UX › should display action slot placeholders in header
+[1A[2K[2/115] [chromium] › tests/e2e/mvp1-enhanced-coverage.spec.ts:54:3 › MVP 1: Enhanced Test Coverage - Accessibility & UX › should have proper heading hierarchy
+[1A[2K[3/115] [chromium] › tests/e2e/mvp1-enhanced-coverage.spec.ts:79:3 › MVP 1: Enhanced Test Coverage - Accessibility & UX › should handle direct URL navigation
+[1A[2K[4/115] [chromium] › tests/e2e/mvp1-enhanced-coverage.spec.ts:4:3 › MVP 1: Enhanced Test Coverage - Accessibility & UX › should have proper page titles on all pages
+[1A[2K[5/115] [chromium] › tests/e2e/mvp1-enhanced-coverage.spec.ts:117:3 › MVP 1: Enhanced Test Coverage - Accessibility & UX › should maintain consistent styling across pages
+[1A[2K[6/115] [chromium] › tests/e2e/mvp1-enhanced-coverage.spec.ts:106:3 › MVP 1: Enhanced Test Coverage - Accessibility & UX › should load XML parser functionality on debug/parser page
+[1A[2K[7/115] [chromium] › tests/e2e/mvp1-enhanced-coverage.spec.ts:26:3 › MVP 1: Enhanced Test Coverage - Accessibility & UX › should support keyboard navigation
+[1A[2K[8/115] [chromium] › tests/e2e/mvp1-enhanced-coverage.spec.ts:68:3 › MVP 1: Enhanced Test Coverage - Accessibility & UX › should render @nuxt/ui components correctly
+[1A[2K[9/115] [chromium] › tests/e2e/mvp1-enhanced-coverage.spec.ts:140:3 › MVP 1: Error Handling & Edge Cases › should handle rapid navigation
+[1A[2K[10/115] [chromium] › tests/e2e/mvp1-enhanced-coverage.spec.ts:131:3 › MVP 1: Error Handling & Edge Cases › should handle invalid routes gracefully
+[1A[2K[11/115] [chromium] › tests/e2e/mvp1-enhanced-coverage.spec.ts:14:3 › MVP 1: Enhanced Test Coverage - Accessibility & UX › should display header consistently across all pages
+[1A[2K[12/115] [chromium] › tests/e2e/mvp1-enhanced-coverage.spec.ts:37:3 › MVP 1: Enhanced Test Coverage - Accessibility & UX › should have accessible navigation links
+[1A[2K[13/115] [chromium] › tests/e2e/mvp1-enhanced-coverage.spec.ts:158:3 › MVP 1: Error Handling & Edge Cases › should preserve header state during navigation
+[1A[2K[14/115] [chromium] › tests/e2e/mvp1-enhanced-coverage.spec.ts:174:3 › MVP 1: Responsive Design Verification › should render correctly on desktop viewport
+[1A[2K[15/115] [chromium] › tests/e2e/mvp1-enhanced-coverage.spec.ts:185:3 › MVP 1: Responsive Design Verification › should render correctly on tablet viewport
+[1A[2K[16/115] [chromium] › tests/e2e/mvp1-enhanced-coverage.spec.ts:196:3 › MVP 1: Responsive Design Verification › should render correctly on minimum supported viewport (1024px)
+[1A[2K[17/115] [chromium] › tests/e2e/mvp2-xml-parser.spec.ts:8:3 › MVP 2: XML Parser Composable - Core Functionality › should load the debug parser page correctly
+[1A[2K[18/115] [chromium] › tests/e2e/mvp2-xml-parser.spec.ts:21:3 › MVP 2: XML Parser Composable - Core Functionality › should automatically load sample XML on mount
+[1A[2K[19/115] [chromium] › tests/e2e/mvp2-xml-parser.spec.ts:37:3 › MVP 2: XML Parser Composable - Core Functionality › should display parsed JSON data after automatic load
+[1A[2K[20/115] [chromium] › tests/e2e/mvp2-xml-parser.spec.ts:57:3 › MVP 2: XML Parser Composable - Core Functionality › should have all required UI components
+[1A[2K[21/115] [chromium] › tests/e2e/mvp2-xml-parser.spec.ts:77:3 › MVP 2: XML Parser Composable - Core Functionality › should have back navigation to home
+[1A[2K[22/115] [chromium] › tests/e2e/mvp2-xml-parser.spec.ts:91:3 › MVP 2: XML Parser - Parse Functionality › should parse valid XML when Parse button is clicked
+[1A[2K[23/115] [chromium] › tests/e2e/mvp2-xml-parser.spec.ts:151:3 › MVP 2: XML Parser - Parse Functionality › should reload sample XML when Reload Sample button is clicked
+[1A[2K[24/115] [chromium] › tests/e2e/mvp2-xml-parser.spec.ts:172:3 › MVP 2: XML Parser - Parse Functionality › should clear all content when Clear button is clicked
+[1A[2K[25/115] [chromium] › tests/e2e/mvp2-xml-parser.spec.ts:191:3 › MVP 2: XML Parser - Parse Functionality › should disable Parse button when textarea is empty
+[1A[2K[26/115] [chromium] › tests/e2e/mvp2-xml-parser.spec.ts:200:3 › MVP 2: XML Parser - Parse Functionality › should enable Parse button when textarea has content
+[1A[2K[27/115] [chromium] › tests/e2e/mvp2-xml-parser.spec.ts:216:3 › MVP 2: XML Parser - Validation & Error Handling › should show validation error for unclosed XML tags
+[1A[2K[28/115] [chromium] › tests/e2e/mvp2-xml-parser.spec.ts:245:3 › MVP 2: XML Parser - Validation & Error Handling › should show validation error for empty XML input
+[1A[2K[29/115] [chromium] › tests/e2e/mvp2-xml-parser.spec.ts:231:3 › MVP 2: XML Parser - Validation & Error Handling › should show validation error for missing required elements
+[1A[2K[30/115] [chromium] › tests/e2e/mvp2-xml-parser.spec.ts:257:3 › MVP 2: XML Parser - Validation & Error Handling › should show validation error for invalid root element
+[1A[2K[31/115] [chromium] › tests/e2e/mvp2-xml-parser.spec.ts:271:3 › MVP 2: XML Parser - Validation & Error Handling › should allow closing validation error alert
+[1A[2K[32/115] [chromium] › tests/e2e/mvp2-xml-parser.spec.ts:295:3 › MVP 2: XML Parser - Validation & Error Handling › should clear previous errors when parsing valid XML
+[1A[2K[33/115] [chromium] › tests/e2e/mvp2-xml-parser.spec.ts:318:3 › MVP 2: XML Parser - Data Extraction Accuracy › should correctly extract all applicant fields
+[1A[2K[34/115] [chromium] › tests/e2e/mvp2-xml-parser.spec.ts:338:3 › MVP 2: XML Parser - Data Extraction Accuracy › should correctly extract recipient fields
+[1A[2K[35/115] [chromium] › tests/e2e/mvp2-xml-parser.spec.ts:356:3 › MVP 2: XML Parser - Data Extraction Accuracy › should correctly extract letter fields
+[1A[2K[36/115] [chromium] › tests/e2e/mvp2-xml-parser.spec.ts:372:3 › MVP 2: XML Parser - Data Extraction Accuracy › should correctly extract experience section with achievements
+[1A[2K[37/115] [chromium] › tests/e2e/mvp2-xml-parser.spec.ts:391:3 › MVP 2: XML Parser - Data Extraction Accuracy › should extract formatStyle attribute if present
+[1A[2K[38/115] [chromium] › tests/e2e/mvp2-xml-parser.spec.ts:402:3 › MVP 2: XML Parser - Data Extraction Accuracy › should extract date field correctly
+[1A[2K[39/115] [chromium] › tests/e2e/mvp2-xml-parser.spec.ts:419:3 › MVP 2: XML Parser - User Experience › should display loading state when loading sample
+[1A[2K[40/115] [chromium] › tests/e2e/mvp2-xml-parser.spec.ts:437:3 › MVP 2: XML Parser - User Experience › should display success message after successful parse
+[1A[2K[41/115] [chromium] › tests/e2e/mvp2-xml-parser.spec.ts:448:3 › MVP 2: XML Parser - User Experience › should allow closing success message
+[1A[2K[chromium] › tests/e2e/mvp2-xml-parser.spec.ts:271:3 › MVP 2: XML Parser - Validation & Error Handling › should allow closing validation error alert
+Alert does not have close button - skipping dismiss test
+
+[1A[2K[42/115] [chromium] › tests/e2e/mvp2-xml-parser.spec.ts:466:3 › MVP 2: XML Parser - User Experience › should display formatted JSON with proper indentation
+[1A[2K[43/115] [chromium] › tests/e2e/mvp2-xml-parser.spec.ts:481:3 › MVP 2: XML Parser - User Experience › should have instructions section visible
+[1A[2K[44/115] [chromium] › tests/e2e/mvp2-xml-parser.spec.ts:500:3 › MVP 2: XML Parser - Accessibility › should have proper ARIA labels and roles
+[1A[2K[45/115] [chromium] › tests/e2e/mvp2-xml-parser.spec.ts:520:3 › MVP 2: XML Parser - Accessibility › should support keyboard navigation
+[1A[2K[46/115] [chromium] › tests/e2e/mvp2-xml-parser.spec.ts:541:3 › MVP 2: XML Parser - Accessibility › should have proper heading hierarchy
+[1A[2K[47/115] [chromium] › tests/e2e/mvp2-xml-parser.spec.ts:560:3 › MVP 2: XML Parser - No Console Errors › should not produce console errors during normal operation
+[1A[2K[48/115] [chromium] › tests/e2e/mvp3-template-system.spec.ts:25:3 › MVP 3: Template System - Page Load and Structure › should load the debug template page correctly
+[1A[2K[chromium] › tests/e2e/mvp2-xml-parser.spec.ts:448:3 › MVP 2: XML Parser - User Experience › should allow closing success message
+Success alert does not have close button - skipping dismiss test
+
+[1A[2K[49/115] [chromium] › tests/e2e/mvp3-template-system.spec.ts:38:3 › MVP 3: Template System - Page Load and Structure › should display active template information
+[1A[2K[50/115] [chromium] › tests/e2e/mvp3-template-system.spec.ts:51:3 › MVP 3: Template System - Page Load and Structure › should have debug information section
+[1A[2K[51/115] [chromium] › tests/e2e/mvp3-template-system.spec.ts:69:3 › MVP 3: Template System - Page Load and Structure › should display sample data structure in debug section
+[1A[2K[52/115] [chromium] › tests/e2e/mvp3-template-system.spec.ts:93:3 › MVP 3: Template System - Modern Template Rendering › should render the template with article element (semantic HTML)
+[1A[2K[53/115] [chromium] › tests/e2e/mvp3-template-system.spec.ts:99:3 › MVP 3: Template System - Modern Template Rendering › should render applicant header section with all fields
+[1A[2K[54/115] [chromium] › tests/e2e/mvp3-template-system.spec.ts:129:3 › MVP 3: Template System - Modern Template Rendering › should render document date section
+[1A[2K[55/115] [chromium] › tests/e2e/mvp3-template-system.spec.ts:157:3 › MVP 3: Template System - Modern Template Rendering › should render letter content section with main element
+[1A[2K[56/115] [chromium] › tests/e2e/mvp3-template-system.spec.ts:135:3 › MVP 3: Template System - Modern Template Rendering › should render recipient section with all fields
+[1A[2K[57/115] [chromium] › tests/e2e/mvp3-template-system.spec.ts:163:3 › MVP 3: Template System - Modern Template Rendering › should render letter salutation
+[1A[2K[58/115] [chromium] › tests/e2e/mvp3-template-system.spec.ts:169:3 › MVP 3: Template System - Modern Template Rendering › should render letter introduction
+[1A[2K[59/115] [chromium] › tests/e2e/mvp3-template-system.spec.ts:177:3 › MVP 3: Template System - Modern Template Rendering › should render experience section with multiple experiences
+[1A[2K[60/115] [chromium] › tests/e2e/mvp3-template-system.spec.ts:194:3 › MVP 3: Template System - Modern Template Rendering › should render achievements as bullet list for each experience
+[1A[2K[61/115] [chromium] › tests/e2e/mvp3-template-system.spec.ts:212:3 › MVP 3: Template System - Modern Template Rendering › should render letter motivation
+[1A[2K[62/115] [chromium] › tests/e2e/mvp3-template-system.spec.ts:220:3 › MVP 3: Template System - Modern Template Rendering › should render letter closing
+[1A[2K[63/115] [chromium] › tests/e2e/mvp3-template-system.spec.ts:227:3 › MVP 3: Template System - Modern Template Rendering › should render letter signature
+[1A[2K  1) [chromium] › tests/e2e/mvp3-template-system.spec.ts:38:3 › MVP 3: Template System - Page Load and Structure › should display active template information 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: getByText(/Active Template:.*Modern/i)
+    Expected: visible
+    Error: strict mode violation: getByText(/Active Template:.*Modern/i) resolved to 2 elements:
+        1) <span data-v-6caffe8f="" class="font-medium inline-flex items-center text-sm px-2 py-1 gap-1.5 rounded-md">…</span> aka getByText('Active Template: Modern', { exact: true })
+        2) <li data-v-6caffe8f="">…</li> aka getByText('Active Template: modern', { exact: true })
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 5000ms[22m
+    [2m  - waiting for getByText(/Active Template:.*Modern/i)[22m
+
+
+      42 |     // Verify template badge/indicator
+      43 |     const templateBadge = page.getByText(/Active Template:.*Modern/i);
+    > 44 |     await expect(templateBadge).toBeVisible();
+         |                                 ^
+      45 |
+      46 |     // Verify template description
+      47 |     const templateDescription = page.getByText(/Professional cover letter template with modern styling/i);
+        at /home/user1/ohmydoc-using-claude-code-agent/tests/e2e/mvp3-template-system.spec.ts:44:33
+
+    Error Context: test-results/mvp3-template-system-MVP-3-4df54-active-template-information-chromium/error-context.md
+
+
+[1A[2K  2) [chromium] › tests/e2e/mvp3-template-system.spec.ts:51:3 › MVP 3: Template System - Page Load and Structure › should have debug information section 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: getByText(/Active Template:.*modern/i)
+    Expected: visible
+    Error: strict mode violation: getByText(/Active Template:.*modern/i) resolved to 2 elements:
+        1) <span data-v-6caffe8f="" class="font-medium inline-flex items-center text-sm px-2 py-1 gap-1.5 rounded-md">…</span> aka getByText('Active Template: Modern', { exact: true })
+        2) <li data-v-6caffe8f="">…</li> aka getByText('Active Template: modern', { exact: true })
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 5000ms[22m
+    [2m  - waiting for getByText(/Active Template:.*modern/i)[22m
+
+
+      61 |
+      62 |     // Verify active template is shown
+    > 63 |     await expect(page.getByText(/Active Template:.*modern/i)).toBeVisible();
+         |                                                               ^
+      64 |
+      65 |     // Verify available templates are listed
+      66 |     await expect(page.getByText(/Available Templates:.*modern/i)).toBeVisible();
+        at /home/user1/ohmydoc-using-claude-code-agent/tests/e2e/mvp3-template-system.spec.ts:63:63
+
+    Error Context: test-results/mvp3-template-system-MVP-3-b04a8-e-debug-information-section-chromium/error-context.md
+
+
+[1A[2K[64/115] [chromium] › tests/e2e/mvp3-template-system.spec.ts:289:3 › MVP 3: Template System - Design System Compliance › should use proper spacing and layout
+[1A[2K[65/115] [chromium] › tests/e2e/mvp3-template-system.spec.ts:307:3 › MVP 3: Template System - Design System Compliance › should style email link with hover effect
+[1A[2K[66/115] [chromium] › tests/e2e/mvp3-template-system.spec.ts:335:3 › MVP 3: Template System - No @nuxt/ui in Template › should use only standard HTML elements in template (no UContainer, UButton, etc.)
+[1A[2K[67/115] [chromium] › tests/e2e/mvp3-template-system.spec.ts:358:3 › MVP 3: Template System - No @nuxt/ui in Template › should render template content within scoped CSS classes only
+[1A[2K[68/115] [chromium] › tests/e2e/mvp3-template-system.spec.ts:380:3 › MVP 3: Template System - Exportability › should render template with inline or external styles (exportable)
+[1A[2K[69/115] [chromium] › tests/e2e/mvp3-template-system.spec.ts:395:3 › MVP 3: Template System - Exportability › should contain all content in a single article element (standalone)
+[1A[2K[70/115] [chromium] › tests/e2e/mvp3-template-system.spec.ts:261:3 › MVP 3: Template System - Design System Compliance › should use design system typography
+[1A[2K[71/115] [chromium] › tests/e2e/mvp3-template-system.spec.ts:240:3 › MVP 3: Template System - Design System Compliance › should use design system color palette
+[1A[2K[72/115] [chromium] › tests/e2e/mvp3-template-system.spec.ts:413:3 › MVP 3: Template System - Exportability › should use standard HTML that works without Vue runtime
+[1A[2K[73/115] [chromium] › tests/e2e/mvp3-template-system.spec.ts:439:3 › MVP 3: Template System - Accessibility › should use semantic HTML elements
+[1A[2K[74/115] [chromium] › tests/e2e/mvp3-template-system.spec.ts:447:3 › MVP 3: Template System - Accessibility › should have proper heading hierarchy
+[1A[2K[75/115] [chromium] › tests/e2e/mvp3-template-system.spec.ts:454:3 › MVP 3: Template System - Accessibility › should have accessible links
+[1A[2K[76/115] [chromium] › tests/e2e/mvp3-template-system.spec.ts:461:3 › MVP 3: Template System - Accessibility › should use list elements for achievements
+[1A[2K[77/115] [chromium] › tests/e2e/mvp3-template-system.spec.ts:477:3 › MVP 3: Template System - User Experience › should load template quickly without rendering delays
+[1A[2K[78/115] [chromium] › tests/e2e/mvp3-template-system.spec.ts:489:3 › MVP 3: Template System - User Experience › should display all content without scrolling horizontally
+[1A[2K  3) [chromium] › tests/e2e/mvp3-template-system.spec.ts:289:3 › MVP 3: Template System - Design System Compliance › should use proper spacing and layout 
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m"720px"[39m
+    Received: [31m"none"[39m
+
+      295 |     });
+      296 |
+    > 297 |     expect(maxWidth).toBe('720px');
+          |                      ^
+      298 |
+      299 |     // Verify article has padding
+      300 |     const padding = await article.evaluate((el) => {
+        at /home/user1/ohmydoc-using-claude-code-agent/tests/e2e/mvp3-template-system.spec.ts:297:22
+
+    Error Context: test-results/mvp3-template-system-MVP-3-ad597-e-proper-spacing-and-layout-chromium/error-context.md
+
+
+[1A[2K[79/115] [chromium] › tests/e2e/mvp3-template-system.spec.ts:516:3 › MVP 3: Template System - No Console Errors › should not produce console errors during template rendering
+[1A[2K[80/115] [chromium] › tests/e2e/mvp3-template-system.spec.ts:537:3 › MVP 3: Template System - No Console Errors › should not have missing CSS or broken styles
+[1A[2K  4) [chromium] › tests/e2e/mvp3-template-system.spec.ts:380:3 › MVP 3: Template System - Exportability › should render template with inline or external styles (exportable) 
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32mtrue[39m
+    Received: [31mfalse[39m
+
+      390 |     });
+      391 |
+    > 392 |     expect(hasStyles).toBe(true);
+          |                       ^
+      393 |   });
+      394 |
+      395 |   test('should contain all content in a single article element (standalone)', async ({ page }) => {
+        at /home/user1/ohmydoc-using-claude-code-agent/tests/e2e/mvp3-template-system.spec.ts:392:23
+
+    Error Context: test-results/mvp3-template-system-MVP-3-3477c-external-styles-exportable--chromium/error-context.md
+
+
+[1A[2K[81/115] [chromium] › tests/e2e/mvp4-monaco-editor.spec.ts:26:5 › MVP 4: Monaco XML Editor Component › Page Load and Basic Rendering › should have navigation back to home
+[1A[2K[82/115] [chromium] › tests/e2e/mvp3-template-system.spec.ts:498:3 › MVP 3: Template System - User Experience › should render readable text without layout issues
+[1A[2K[83/115] [chromium] › tests/e2e/mvp4-monaco-editor.spec.ts:32:5 › MVP 4: Monaco XML Editor Component › Page Load and Basic Rendering › should display control buttons
+[1A[2K  5) [chromium] › tests/e2e/mvp3-template-system.spec.ts:439:3 › MVP 3: Template System - Accessibility › should use semantic HTML elements 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: locator('header')
+    Expected: visible
+    Error: strict mode violation: locator('header') resolved to 2 elements:
+        1) <header data-v-6caffe8f="" class="page-header">…</header> aka getByRole('banner')
+        2) <header data-v-79a07449="" class="application-header">…</header> aka locator('header').filter({ hasText: 'Jane Doe123 Main Street' })
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 5000ms[22m
+    [2m  - waiting for locator('header')[22m
+
+
+      440 |     // Verify semantic elements exist
+      441 |     await expect(page.locator('article')).toBeVisible();
+    > 442 |     await expect(page.locator('header')).toBeVisible();
+          |                                          ^
+      443 |     await expect(page.locator('main')).toBeVisible();
+      444 |     await expect(page.locator('address')).toHaveCount(2); // applicant and recipient addresses
+      445 |   });
+        at /home/user1/ohmydoc-using-claude-code-agent/tests/e2e/mvp3-template-system.spec.ts:442:42
+
+    Error Context: test-results/mvp3-template-system-MVP-3-9cc10--use-semantic-HTML-elements-chromium/error-context.md
+
+
+[1A[2K  6) [chromium] › tests/e2e/mvp3-template-system.spec.ts:240:3 › MVP 3: Template System - Design System Compliance › should use design system color palette 
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoMatch[2m([22m[32mexpected[39m[2m)[22m
+
+    Expected pattern: [32m/rgb\(17,\s*17,\s*17\)/[39m
+    Received string:  [31m"rgb(0, 0, 0)"[39m
+
+      256 |
+      257 |     // Color should be dark (close to #111)
+    > 258 |     expect(color).toMatch(/rgb\(17,\s*17,\s*17\)/);
+          |                   ^
+      259 |   });
+      260 |
+      261 |   test('should use design system typography', async ({ page }) => {
+        at /home/user1/ohmydoc-using-claude-code-agent/tests/e2e/mvp3-template-system.spec.ts:258:19
+
+    Error Context: test-results/mvp3-template-system-MVP-3-2947a-design-system-color-palette-chromium/error-context.md
+
+
+[1A[2K  7) [chromium] › tests/e2e/mvp3-template-system.spec.ts:261:3 › MVP 3: Template System - Design System Compliance › should use design system typography 
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBeGreaterThanOrEqual[2m([22m[32mexpected[39m[2m)[22m
+
+    Expected: >= [32m24[39m
+    Received:    [31mNaN[39m
+
+      283 |
+      284 |     // Line height should be 1.6 times font size (approximately 25.6px)
+    > 285 |     expect(parseFloat(lineHeight)).toBeGreaterThanOrEqual(24);
+          |                                    ^
+      286 |     expect(parseFloat(lineHeight)).toBeLessThanOrEqual(27);
+      287 |   });
+      288 |
+        at /home/user1/ohmydoc-using-claude-code-agent/tests/e2e/mvp3-template-system.spec.ts:285:36
+
+    Error Context: test-results/mvp3-template-system-MVP-3-f2218-se-design-system-typography-chromium/error-context.md
+
+
+[1A[2K[84/115] [chromium] › tests/e2e/mvp4-monaco-editor.spec.ts:75:5 › MVP 4: Monaco XML Editor Component › Sample XML Loading › should automatically load sample XML on page load
+[1A[2K[85/115] [chromium] › tests/e2e/mvp4-monaco-editor.spec.ts:89:5 › MVP 4: Monaco XML Editor Component › Sample XML Loading › should display line numbers in the Monaco editor
+[1A[2K[86/115] [chromium] › tests/e2e/mvp4-monaco-editor.spec.ts:99:5 › MVP 4: Monaco XML Editor Component › Sample XML Loading › should load valid XML content from sample file
+[1A[2K[87/115] [chromium] › tests/e2e/mvp4-monaco-editor.spec.ts:114:5 › MVP 4: Monaco XML Editor Component › Monaco Editor Features › should render Monaco editor component
+[1A[2K[88/115] [chromium] › tests/e2e/mvp4-monaco-editor.spec.ts:9:5 › MVP 4: Monaco XML Editor Component › Page Load and Basic Rendering › should load the Monaco editor demo page successfully
+[1A[2K[89/115] [chromium] › tests/e2e/mvp4-monaco-editor.spec.ts:120:5 › MVP 4: Monaco XML Editor Component › Monaco Editor Features › should display code in dark theme
+[1A[2K  8) [chromium] › tests/e2e/mvp3-template-system.spec.ts:498:3 › MVP 3: Template System - User Experience › should render readable text without layout issues 
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBeLessThanOrEqual[2m([22m[32mexpected[39m[2m)[22m
+
+    Expected: <= [32m800[39m
+    Received:    [31m1200[39m
+
+      508 |
+      509 |       // Width should not exceed max-width of 720px (plus some padding)
+    > 510 |       expect(box.width).toBeLessThanOrEqual(800);
+          |                         ^
+      511 |     }
+      512 |   });
+      513 | });
+        at /home/user1/ohmydoc-using-claude-code-agent/tests/e2e/mvp3-template-system.spec.ts:510:25
+
+    Error Context: test-results/mvp3-template-system-MVP-3-c0fea--text-without-layout-issues-chromium/error-context.md
+
+
+[1A[2K[90/115] [chromium] › tests/e2e/mvp4-monaco-editor.spec.ts:132:5 › MVP 4: Monaco XML Editor Component › Monaco Editor Features › should have accessible editor with proper ARIA attributes
+[1A[2K[91/115] [chromium] › tests/e2e/mvp4-monaco-editor.spec.ts:50:5 › MVP 4: Monaco XML Editor Component › Page Load and Basic Rendering › should display Monaco editor features list
+[1A[2K[92/115] [chromium] › tests/e2e/mvp4-monaco-editor.spec.ts:40:5 › MVP 4: Monaco XML Editor Component › Page Load and Basic Rendering › should display editor statistics section
+[1A[2K[93/115] [chromium] › tests/e2e/mvp4-monaco-editor.spec.ts:64:5 › MVP 4: Monaco XML Editor Component › Page Load and Basic Rendering › should display usage instructions
+[1A[2K  9) [chromium] › tests/e2e/mvp3-template-system.spec.ts:537:3 › MVP 3: Template System - No Console Errors › should not have missing CSS or broken styles 
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m"720px"[39m
+    Received: [31m"none"[39m
+
+      554 |     // Verify key styles are not default/missing
+      555 |     expect(computedStyle.display).not.toBe('inline'); // Should be block-level
+    > 556 |     expect(computedStyle.maxWidth).toBe('720px');
+          |                                    ^
+      557 |     expect(computedStyle.fontFamily).toContain('serif');
+      558 |     expect(computedStyle.fontSize).toBe('16px');
+      559 |   });
+        at /home/user1/ohmydoc-using-claude-code-agent/tests/e2e/mvp3-template-system.spec.ts:556:36
+
+    Error Context: test-results/mvp3-template-system-MVP-3-c3762-issing-CSS-or-broken-styles-chromium/error-context.md
+
+
+[1A[2K[94/115] [chromium] › tests/e2e/mvp4-monaco-editor.spec.ts:154:5 › MVP 4: Monaco XML Editor Component › v-model Two-Way Binding and Reactivity › should update statistics when Clear button is clicked
+[1A[2K[95/115] [chromium] › tests/e2e/mvp4-monaco-editor.spec.ts:126:5 › MVP 4: Monaco XML Editor Component › Monaco Editor Features › should show minimap
+[1A[2K[96/115] [chromium] › tests/e2e/mvp4-monaco-editor.spec.ts:174:5 › MVP 4: Monaco XML Editor Component › v-model Two-Way Binding and Reactivity › should restore statistics when Reset to Sample is clicked
+[1A[2K[97/115] [chromium] › tests/e2e/mvp4-monaco-editor.spec.ts:198:5 › MVP 4: Monaco XML Editor Component › v-model Two-Way Binding and Reactivity › should demonstrate v-model reactivity with Clear and Reset cycle
+[1A[2K[98/115] [chromium] › tests/e2e/mvp4-monaco-editor.spec.ts:230:5 › MVP 4: Monaco XML Editor Component › Button Functionality › should have enabled Reset to Sample button initially
+[1A[2K  10) [chromium] › tests/e2e/mvp4-monaco-editor.spec.ts:50:5 › MVP 4: Monaco XML Editor Component › Page Load and Basic Rendering › should display Monaco editor features list 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: getByText('Auto-Closing Tags')
+    Expected: visible
+    Error: strict mode violation: getByText('Auto-Closing Tags') resolved to 2 elements:
+        1) <span class="text-gray-700 dark:text-gray-300">Auto-Closing Tags</span> aka getByText('Auto-Closing Tags', { exact: true })
+        2) <p>…</p> aka getByText('3. XML Features: Test XML-')
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 5000ms[22m
+    [2m  - waiting for getByText('Auto-Closing Tags')[22m
+
+
+      56 |       await expect(page.getByText('Line Numbers')).toBeVisible();
+      57 |       await expect(page.getByText('Auto-Indentation')).toBeVisible();
+    > 58 |       await expect(page.getByText('Auto-Closing Tags')).toBeVisible();
+         |                                                         ^
+      59 |       await expect(page.getByText('Bracket Matching')).toBeVisible();
+      60 |       await expect(page.getByText('IntelliSense / Code Completion')).toBeVisible();
+      61 |       await expect(page.getByText('v-model Two-Way Binding')).toBeVisible();
+        at /home/user1/ohmydoc-using-claude-code-agent/tests/e2e/mvp4-monaco-editor.spec.ts:58:57
+
+    Error Context: test-results/mvp4-monaco-editor-MVP-4-M-d0c09-Monaco-editor-features-list-chromium/error-context.md
+
+
+[1A[2K[99/115] [chromium] › tests/e2e/mvp4-monaco-editor.spec.ts:240:5 › MVP 4: Monaco XML Editor Component › Button Functionality › should handle multiple Clear clicks without errors
+[1A[2K[100/115] [chromium] › tests/e2e/mvp4-monaco-editor.spec.ts:140:5 › MVP 4: Monaco XML Editor Component › v-model Two-Way Binding and Reactivity › should show initial statistics matching loaded content
+[1A[2K[101/115] [chromium] › tests/e2e/mvp4-monaco-editor.spec.ts:257:5 › MVP 4: Monaco XML Editor Component › Button Functionality › should handle multiple Reset clicks without errors
+[1A[2K[102/115] [chromium] › tests/e2e/mvp4-monaco-editor.spec.ts:235:5 › MVP 4: Monaco XML Editor Component › Button Functionality › should have enabled Clear button
+[1A[2K[103/115] [chromium] › tests/e2e/mvp4-monaco-editor.spec.ts:276:5 › MVP 4: Monaco XML Editor Component › Error Handling › should not show error alerts on successful load
+[1A[2K[104/115] [chromium] › tests/e2e/mvp4-monaco-editor.spec.ts:284:5 › MVP 4: Monaco XML Editor Component › Error Handling › should handle page reload gracefully
+[1A[2K[105/115] [chromium] › tests/e2e/mvp4-monaco-editor.spec.ts:298:5 › MVP 4: Monaco XML Editor Component › Component Integration › should integrate XmlEditor component with @nuxt/ui styling
+[1A[2K[106/115] [chromium] › tests/e2e/mvp4-monaco-editor.spec.ts:307:5 › MVP 4: Monaco XML Editor Component › Component Integration › should maintain consistent layout structure
+[1A[2K[107/115] [chromium] › tests/e2e/mvp4-monaco-editor.spec.ts:319:5 › MVP 4: Monaco XML Editor Component › Accessibility › should have proper heading hierarchy
+[1A[2K[108/115] [chromium] › tests/e2e/mvp4-monaco-editor.spec.ts:334:5 › MVP 4: Monaco XML Editor Component › Accessibility › should support keyboard navigation to buttons
+[1A[2K[109/115] [chromium] › tests/e2e/mvp4-monaco-editor.spec.ts:348:5 › MVP 4: Monaco XML Editor Component › Accessibility › should have accessible Monaco editor with aria-label
+[1A[2K[110/115] [chromium] › tests/e2e/mvp4-monaco-editor.spec.ts:355:5 › MVP 4: Monaco XML Editor Component › Responsive Design › should render correctly on desktop viewport (1920x1080)
+[1A[2K[111/115] [chromium] › tests/e2e/mvp4-monaco-editor.spec.ts:366:5 › MVP 4: Monaco XML Editor Component › Responsive Design › should render correctly on minimum supported viewport (1024px)
+[1A[2K[112/115] [chromium] › tests/e2e/mvp4-monaco-editor.spec.ts:382:5 › MVP 4: Monaco XML Editor Component › Performance › should load Monaco editor within reasonable time
+[1A[2K[113/115] [chromium] › tests/e2e/mvp4-monaco-editor.spec.ts:394:5 › MVP 4: Monaco XML Editor Component › Performance › should respond to button clicks quickly
+[1A[2K[114/115] [chromium] › tests/e2e/mvp4-monaco-editor.spec.ts:408:5 › MVP 4: Monaco XML Editor Component › Console and Browser Errors › should not have critical console errors
+[1A[2K[115/115] [chromium] › tests/e2e/mvp4-monaco-editor.spec.ts:427:5 › MVP 4: Monaco XML Editor Component › Console and Browser Errors › should not have uncaught exceptions
+[1A[2K  11) [chromium] › tests/e2e/mvp4-monaco-editor.spec.ts:120:5 › MVP 4: Monaco XML Editor Component › Monaco Editor Features › should display code in dark theme 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: locator('.monaco-editor.vs-dark')
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 5000ms[22m
+    [2m  - waiting for locator('.monaco-editor.vs-dark')[22m
+
+
+      121 |       // Check for Monaco's dark theme class
+      122 |       const editor = page.locator('.monaco-editor.vs-dark');
+    > 123 |       await expect(editor).toBeVisible();
+          |                            ^
+      124 |     });
+      125 |
+      126 |     test('should show minimap', async ({ page }) => {
+        at /home/user1/ohmydoc-using-claude-code-agent/tests/e2e/mvp4-monaco-editor.spec.ts:123:28
+
+    Error Context: test-results/mvp4-monaco-editor-MVP-4-M-25f19--display-code-in-dark-theme-chromium/error-context.md
+
+
+[1A[2K  12) [chromium] › tests/e2e/mvp4-monaco-editor.spec.ts:427:5 › MVP 4: Monaco XML Editor Component › Console and Browser Errors › should not have uncaught exceptions 
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m0[39m
+    Received: [31m1[39m
+
+      440 |       await page.waitForTimeout(2000);
+      441 |
+    > 442 |       expect(exceptions.length).toBe(0);
+          |                                 ^
+      443 |     });
+      444 |   });
+      445 | });
+        at /home/user1/ohmydoc-using-claude-code-agent/tests/e2e/mvp4-monaco-editor.spec.ts:442:33
+
+    Error Context: test-results/mvp4-monaco-editor-MVP-4-M-12a54-ot-have-uncaught-exceptions-chromium/error-context.md
+
+
+[1A[2K  12 failed
+    [chromium] › tests/e2e/mvp3-template-system.spec.ts:38:3 › MVP 3: Template System - Page Load and Structure › should display active template information 
+    [chromium] › tests/e2e/mvp3-template-system.spec.ts:51:3 › MVP 3: Template System - Page Load and Structure › should have debug information section 
+    [chromium] › tests/e2e/mvp3-template-system.spec.ts:240:3 › MVP 3: Template System - Design System Compliance › should use design system color palette 
+    [chromium] › tests/e2e/mvp3-template-system.spec.ts:261:3 › MVP 3: Template System - Design System Compliance › should use design system typography 
+    [chromium] › tests/e2e/mvp3-template-system.spec.ts:289:3 › MVP 3: Template System - Design System Compliance › should use proper spacing and layout 
+    [chromium] › tests/e2e/mvp3-template-system.spec.ts:380:3 › MVP 3: Template System - Exportability › should render template with inline or external styles (exportable) 
+    [chromium] › tests/e2e/mvp3-template-system.spec.ts:439:3 › MVP 3: Template System - Accessibility › should use semantic HTML elements 
+    [chromium] › tests/e2e/mvp3-template-system.spec.ts:498:3 › MVP 3: Template System - User Experience › should render readable text without layout issues 
+    [chromium] › tests/e2e/mvp3-template-system.spec.ts:537:3 › MVP 3: Template System - No Console Errors › should not have missing CSS or broken styles 
+    [chromium] › tests/e2e/mvp4-monaco-editor.spec.ts:50:5 › MVP 4: Monaco XML Editor Component › Page Load and Basic Rendering › should display Monaco editor features list 
+    [chromium] › tests/e2e/mvp4-monaco-editor.spec.ts:120:5 › MVP 4: Monaco XML Editor Component › Monaco Editor Features › should display code in dark theme 
+    [chromium] › tests/e2e/mvp4-monaco-editor.spec.ts:427:5 › MVP 4: Monaco XML Editor Component › Console and Browser Errors › should not have uncaught exceptions 
+  103 passed (18.2s)
+
+[36m  Serving HTML report at http://localhost:9323. Press Ctrl+C to quit.[39m
