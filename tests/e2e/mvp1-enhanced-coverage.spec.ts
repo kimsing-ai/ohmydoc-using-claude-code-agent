@@ -103,14 +103,14 @@ test.describe('MVP 1: Enhanced Test Coverage - Accessibility & UX', () => {
     await expect(headerContainer).toBeVisible();
   });
 
-  test('should show "Coming Soon" alert on debug/parser page', async ({ page }) => {
+  test('should load XML parser functionality on debug/parser page', async ({ page }) => {
     await page.goto('/debug/parser');
 
-    // Verify the alert indicating future functionality
-    const alert = page.getByText(/Coming Soon/i);
-    await expect(alert).toBeVisible();
+    // MVP 2 is now implemented, verify parser functionality is present
+    const heading = page.locator('h2', { hasText: 'XML Parser Demo' });
+    await expect(heading).toBeVisible();
 
-    const description = page.getByText(/XML parser component will be implemented in MVP 2/i);
+    const description = page.getByText(/Component demo page for MVP 2/i);
     await expect(description).toBeVisible();
   });
 
