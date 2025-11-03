@@ -12,6 +12,8 @@ node_modules
 # Logs
 logs
 *.log
+# Allow logs in docs folder for GitHub Pages
+!docs/**/*.log
 
 # Misc
 .DS_Store
