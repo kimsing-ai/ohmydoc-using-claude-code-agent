@@ -1,4 +1,5 @@
-import { test, expect, Page } from '@playwright/test';
+import type { Page } from '@playwright/test';
+import { test, expect } from '@playwright/test';
 
 // Helper function to select dropdown option in USelect
 async function selectDropdownOption(page: Page, optionName: string) {
@@ -370,7 +371,7 @@ test.describe('MVP 5: Preview Panel Component with Error Handling', () => {
       await page.waitForTimeout(500);
 
       // Initial state - valid XML
-      let applicantName = page.locator('h1', { hasText: 'Jane Doe' });
+      const applicantName = page.locator('h1', { hasText: 'Jane Doe' });
       await expect(applicantName).toBeVisible();
 
       // Update props by switching sample
