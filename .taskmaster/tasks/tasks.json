@@ -185,13 +185,13 @@
         "id": 4,
         "title": "Monaco XML Editor Component",
         "description": "Create reusable Monaco editor wrapper component for XML editing (used in MVP 6 main app)",
-        "details": "Install nuxt-monaco-editor dependency per DECISIONS.md Decision 8 (Monaco is VS Code's editor with XML support built-in). Configure Monaco in nuxt.config.ts. Create components/XmlEditor.vue as reusable Monaco wrapper with XML language support, v-model two-way binding (props: modelValue string, emits: update:modelValue, error). Configure editor features: line numbers, auto-indent, XML syntax highlighting, IntelliSense. Create pages/debug/editor.vue to test component in isolation (load sample XML, show editor stats like line/char count) before using in main app (MVP 6).",
+        "details": "Install nuxt-monaco-editor dependency per DECISIONS.md Decision 8 (Monaco is VS Code's editor with XML support built-in). Configure Monaco in nuxt.config.ts. Create components/XmlEditor.vue as reusable Monaco wrapper with XML language support, v-model two-way binding (props: modelValue string, emits: update:modelValue, error). Configure editor features: line numbers, auto-indent, XML syntax highlighting, IntelliSense. Create pages/debug/editor.vue to test component in isolation (load sample XML, show editor stats like line/char count) before using in main app (MVP 6).\n<info added on 2025-11-03T22:08:10.805Z>\nCOMPLETION SUMMARY:\n\nTask 4 has been successfully completed and is ready for review. All implementation objectives have been achieved:\n\n✅ XmlEditor.vue component created with full v-model support and XML-specific Monaco configuration\n✅ All editor features implemented: line numbers, auto-indent, syntax highlighting, IntelliSense, bracket matching, auto-closing tags\n✅ Debug page (/debug/editor) built for component isolation testing with sample XML auto-loading and real-time statistics\n✅ All subtasks (4.1-4.4) completed and validated\n✅ Code linting passes for all new files\n✅ Pull request created: https://github.com/kimsing-ai/ohmydoc-using-claude-code-agent/pull/12\n\nTESTING VALIDATION COMPLETE:\n- Monaco editor loads without errors\n- XML syntax highlighting working correctly\n- v-model two-way binding confirmed (Clear/Reset buttons update stats reactively)\n- Line numbers and auto-indentation functional\n- Component is reusable for MVP 6 integration\n- No runtime errors in console\n\nThe XmlEditor component is production-ready and follows all architectural patterns from CLAUDE.md. Component is ready for integration into MVP 6 main application.\n</info added on 2025-11-03T22:08:10.805Z>",
         "testStrategy": "Verify Monaco editor loads without errors, XML syntax highlighting works, can type and edit content reactively, v-model binding updates parent component, line numbers and auto-indentation enabled, and editor is reusable (will be used in MVP 6 main app)",
         "priority": "medium",
         "dependencies": [
           1
         ],
-        "status": "pending",
+        "status": "review",
         "subtasks": [
           {
             "id": 1,
@@ -199,7 +199,7 @@
             "description": "Install nuxt-monaco-editor npm package and add Monaco configuration to nuxt.config.ts",
             "dependencies": [],
             "details": "Install nuxt-monaco-editor package via npm (check latest compatible version for Nuxt 4.1.3). Add 'nuxt-monaco-editor' to modules array in nuxt.config.ts. Configure Monaco settings: enable XML language support, set default theme (vs-dark or vs-light), configure basic editor options (fontSize, wordWrap, minimap settings). Per DECISIONS.md Decision 8, Monaco provides XML syntax highlighting and IntelliSense out-of-the-box.",
-            "status": "pending",
+            "status": "done",
             "testStrategy": "Verify npm install completes successfully, nuxt.config.ts has monaco-editor module configured, app runs without errors (npm run dev), and Monaco module is available for import in components"
           },
           {
@@ -210,7 +210,7 @@
               1
             ],
             "details": "Create components/XmlEditor.vue. Define props: modelValue (string) for v-model binding. Define emits: update:modelValue (string) for two-way binding, error (string) for error events. Use Vue 3 Composition API (setup script). Import Monaco editor component from nuxt-monaco-editor. Handle Monaco editor instance creation, content synchronization (modelValue → Monaco, Monaco changes → emit update:modelValue), and proper cleanup on unmount. Configure editor height/width props for flexibility.",
-            "status": "pending",
+            "status": "done",
             "testStrategy": "Verify component accepts modelValue prop, emits update:modelValue when content changes, v-model two-way binding works reactively (parent ← → XmlEditor), editor instance is created/destroyed properly, and no memory leaks on component unmount"
           },
           {
@@ -221,7 +221,7 @@
               2
             ],
             "details": "In XmlEditor.vue, configure Monaco editor options: language set to 'xml', line numbers enabled (lineNumbers: 'on'), auto-indentation enabled (autoIndent: 'full'), XML syntax highlighting (automatic with language: 'xml'), tab size (tabSize: 2 for XML), word wrap options. Enable IntelliSense features for XML (bracket matching, auto-closing tags). Set editor theme consistent with app design (consider light/dark mode if applicable).",
-            "status": "pending",
+            "status": "done",
             "testStrategy": "Verify XML syntax highlighting colors tags/attributes/values correctly, line numbers display on left side, auto-indentation works when pressing Enter in XML tags, XML-specific features work (auto-close tags, bracket matching), and editor is visually consistent with app"
           },
           {
@@ -232,7 +232,7 @@
               3
             ],
             "details": "Create pages/debug/editor.vue for component isolation testing (per DECISIONS.md: demo pages test components before main app integration). Import XmlEditor component. Load sample XML from /samples/cover-letter.xml on mount using fetch. Use v-model to bind editor content to reactive ref. Display editor statistics below editor: current line count, character count, word count (demonstrates v-model reactivity). Use @nuxt/ui for page chrome (layout, container) but editor is the focus. Add basic controls like 'Reset to Sample' button.",
-            "status": "pending",
+            "status": "done",
             "testStrategy": "Verify debug page loads without errors, XmlEditor component renders correctly, sample XML loads on mount and displays in editor, editor statistics update reactively as user types, v-model binding works (typing updates stats), and editor is functional for all editing operations"
           }
         ]
@@ -829,7 +829,7 @@
     ],
     "metadata": {
       "created": "2025-10-11T23:37:25.290Z",
-      "updated": "2025-11-03T20:59:17.398Z",
+      "updated": "2025-11-03T22:07:47.551Z",
       "description": "Tasks for master context"
     }
   }
