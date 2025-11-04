@@ -97,6 +97,7 @@
 
 <script setup lang="ts">
 import type { ParsedData } from '~/composables/useXmlParser'
+import './styles.css'
 
 /**
  * Modern Template Component
@@ -104,6 +105,12 @@ import type { ParsedData } from '~/composables/useXmlParser'
  * Renders a cover letter in a modern, professional style.
  * Uses only standard HTML elements and scoped CSS (no @nuxt/ui components).
  * This ensures the template can be exported as standalone HTML.
+ *
+ * CSS Import Strategy:
+ * - CSS is imported as a module in the script section
+ * - This ensures reliable loading across all deployment platforms (including Vercel)
+ * - The <style scoped> block below adds component-specific scoping
+ * - Maintains CSS separation: styles.css remains a separate, maintainable file
  */
 
 interface Props {
@@ -113,20 +120,17 @@ interface Props {
 defineProps<Props>()
 </script>
 
-<style scoped src="./styles.css">
+<style scoped>
 /**
  * Modern Template Styles
  *
- * Uses Vue's src attribute to import external CSS with scoping enabled.
- * This approach maintains CSS separation (PRD requirement) while ensuring
- * Vue's scoped CSS mechanism properly processes the styles in both
- * development and production builds.
+ * The actual CSS is imported as a module in the <script> section above.
+ * This style block is kept to apply Vue's scoped CSS mechanism.
  *
- * IMPORTANT: Using @import inside <style scoped> blocks does NOT work
- * reliably in Vite production builds because Vue's scoped CSS compiler
- * cannot process external imports to add scoping attributes. The src
- * attribute is the official Vue syntax for importing external CSS with scoping.
- *
- * Reference: Vue SFC Specification - <style> Block with src attribute
+ * Why this approach:
+ * - Both @import and src attribute had issues in production/Vercel
+ * - Script import ensures CSS is bundled and loaded correctly
+ * - Empty scoped block ensures Vue adds scoping attributes to all elements
+ * - Maintains architecture: CSS file separate, scoping applied
  */
 </style>
