@@ -36,7 +36,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, watch, onMounted } from 'vue'
+import { ref, watch, onMounted, onUnmounted } from 'vue'
 
 /**
  * Main Application Page - MVP 6: Dual-Panel Integration
@@ -115,6 +115,16 @@ onMounted(async () => {
 
     xmlContent.value = fallbackXml
     debouncedXmlContent.value = fallbackXml
+  }
+})
+
+/**
+ * Cleanup: Clear debounce timer on component unmount
+ * Prevents memory leaks if component unmounts during debounce window
+ */
+onUnmounted(() => {
+  if (debounceTimer) {
+    clearTimeout(debounceTimer)
   }
 })
 </script>
