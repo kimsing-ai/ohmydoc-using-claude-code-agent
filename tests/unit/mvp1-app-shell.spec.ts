@@ -8,19 +8,25 @@ test.describe('MVP 1: Basic App Shell with Header and Routing', () => {
     await expect(page).toHaveTitle(/OhMyDoc/);
   });
 
-  test('should display AppHeader with title', async ({ page }) => {
+  test('should display AppHeader with title on main page', async ({ page }) => {
     await page.goto('/');
 
-    // Check that AppHeader displays the app title
-    const header = page.locator('h1:has-text("OhMyDoc")');
+    // Check that AppHeader displays the app title (use .first() since header appears once)
+    const header = page.getByRole('heading', { name: 'OhMyDoc v2' });
     await expect(header).toBeVisible();
   });
 
-  test('should navigate to /debug/parser page', async ({ page }) => {
+  test('should display AppHeader with tagline', async ({ page }) => {
     await page.goto('/');
 
-    // Click on the XML Parser Demo button
-    await page.click('text=XML Parser Demo');
+    // Check that the tagline is visible
+    const tagline = page.getByText('XML to HTML Transformer');
+    await expect(tagline).toBeVisible();
+  });
+
+  test('should navigate to /debug/parser page directly', async ({ page }) => {
+    // Navigate directly to debug page (no navigation buttons on main page)
+    await page.goto('/debug/parser');
 
     // Verify we're on the debug/parser page
     await expect(page).toHaveURL(/\/debug\/parser/);
@@ -41,12 +47,15 @@ test.describe('MVP 1: Basic App Shell with Header and Routing', () => {
     await expect(page).toHaveURL('/');
   });
 
-  test('should display empty action slots in header', async ({ page }) => {
+  test('should display dual-panel layout on main page', async ({ page }) => {
     await page.goto('/');
 
-    // The header should exist with the structure for left and right action slots
-    // These slots are empty for now but the structure should be present
-    const header = page.locator('h1:has-text("OhMyDoc")').locator('..');
-    await expect(header).toBeVisible();
+    // The main page should have the dual-panel layout with editor and preview
+    // Use first() to select the first visible instance of each panel
+    const editorPanel = page.locator('.editor-panel').first();
+    const previewPanel = page.locator('.preview-panel').first();
+
+    await expect(editorPanel).toBeVisible();
+    await expect(previewPanel).toBeVisible();
   });
 });

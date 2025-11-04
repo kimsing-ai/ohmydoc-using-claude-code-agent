@@ -6,10 +6,15 @@
         <slot name="left-actions" />
       </div>
 
-      <!-- App Title -->
-      <h1 class="text-xl font-bold text-gray-900 dark:text-white">
-        OhMyDoc
-      </h1>
+      <!-- App Title and Tagline -->
+      <div class="text-center">
+        <h1 class="text-xl font-bold text-gray-900 dark:text-white">
+          OhMyDoc v2
+        </h1>
+        <p class="text-xs text-gray-600 dark:text-gray-400">
+          XML to HTML Transformer
+        </p>
+      </div>
 
       <!-- Right action slot for future buttons (Export, Zoom - MVPs 7 & 9) -->
       <div class="flex items-center gap-2">
