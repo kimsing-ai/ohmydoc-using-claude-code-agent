@@ -8,6 +8,8 @@
 
 import type { Component } from 'vue'
 import CoverLetterModern from '~/templates/modern/CoverLetterModern.vue'
+import CoverLetterClassic from '~/templates/classic/CoverLetterClassic.vue'
+import CoverLetterMinimal from '~/templates/minimal/CoverLetterMinimal.vue'
 
 // Template metadata interface for future extensibility
 export interface TemplateMetadata {
@@ -28,11 +30,17 @@ export interface TemplateRegistry {
  * ACTIVE_TEMPLATE Constant
  *
  * Change this constant to switch templates in the PoC.
- * Available options: 'modern' (more templates will be added in MVP 11)
+ * Available options: 'modern', 'classic', 'minimal'
  *
  * Example:
- *   const ACTIVE_TEMPLATE = 'modern'  // Uses Modern template
- *   const ACTIVE_TEMPLATE = 'classic' // Uses Classic template (when available)
+ *   const ACTIVE_TEMPLATE = 'modern'  // Uses Modern template (default)
+ *   const ACTIVE_TEMPLATE = 'classic' // Uses Classic template (table-based layout)
+ *   const ACTIVE_TEMPLATE = 'minimal' // Uses Minimal template (clean, minimalist style)
+ *
+ * Template Descriptions:
+ * - modern: Professional cover letter with modern styling, semantic HTML (article/header)
+ * - classic: Traditional cover letter with table-based layout, uppercase headers
+ * - minimal: Clean, minimalist design with simple div structure and generous whitespace
  */
 const ACTIVE_TEMPLATE = 'modern'
 
@@ -40,7 +48,7 @@ const ACTIVE_TEMPLATE = 'modern'
  * Template Registry
  *
  * Maps template names to their Vue components and metadata.
- * Templates will be registered here as they are implemented.
+ * All templates use the same ParsedData props interface for consistency.
  */
 const templates: TemplateRegistry = {
   modern: {
@@ -51,7 +59,22 @@ const templates: TemplateRegistry = {
       description: 'Professional cover letter template with modern styling and clean typography',
     },
   },
-  // Additional templates (Classic, Minimal) will be added in MVP 11
+  classic: {
+    component: CoverLetterClassic,
+    metadata: {
+      name: 'classic',
+      displayName: 'Classic',
+      description: 'Traditional cover letter with table-based layout and formal styling',
+    },
+  },
+  minimal: {
+    component: CoverLetterMinimal,
+    metadata: {
+      name: 'minimal',
+      displayName: 'Minimal',
+      description: 'Clean, minimalist cover letter design with simple structure and generous whitespace',
+    },
+  },
 }
 
 /**

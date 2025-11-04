@@ -1,0 +1,250 @@
+/**
+ * Classic Template Styles
+ *
+ * Traditional cover letter styling using table-based layout.
+ * Color palette (PRD 4.2): --ink: #111, --muted: #555, --accent: #0f6fec
+ * Typography (PRD 4.3): --font-body: ui-serif, --font-ui: ui-sans-serif
+ *
+ * This stylesheet uses ONLY scoped CSS (no @nuxt/ui, no Tailwind utilities)
+ * to ensure the template is exportable as standalone HTML.
+ */
+
+/* CSS Custom Properties (Design System) */
+:root {
+  --font-body: ui-serif, Georgia, "Times New Roman", Times, serif;
+  --font-ui: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  --max-width: 720px;
+  --ink: #111;
+  --muted: #555;
+  --accent: #0f6fec;
+  --gap: 0.9rem;
+  --gap-lg: 1.25rem;
+  --line: 1.6;
+}
+
+/* Base Styles */
+* {
+  box-sizing: border-box;
+}
+
+/* Classic Document Container */
+.classic-document {
+  margin: 0 auto;
+  max-width: var(--max-width);
+  background: #fff;
+  color: var(--ink);
+  font: 16px/var(--line) var(--font-body);
+  padding: 2rem 1rem;
+}
+
+/* Table Reset */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  margin: 0;
+}
+
+td {
+  padding: 0;
+  vertical-align: top;
+}
+
+/* Header Table */
+.header-table {
+  margin-bottom: var(--gap-lg);
+  border-bottom: 2px solid var(--ink);
+  padding-bottom: var(--gap);
+}
+
+.applicant-section {
+  padding: 0.5rem 0;
+}
+
+.applicant-name {
+  font-family: var(--font-ui);
+  font-size: 1.75rem;
+  line-height: 1.2;
+  margin: 0 0 0.5rem 0;
+  font-weight: 700;
+  color: var(--ink);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.address-block {
+  color: var(--muted);
+  line-height: 1.5;
+  margin: 0.5rem 0;
+  font-size: 0.95rem;
+}
+
+.contact-block {
+  font-family: var(--font-ui);
+  color: var(--muted);
+  margin: 0.5rem 0 0 0;
+  font-size: 0.9rem;
+}
+
+.contact-block .phone {
+  color: inherit;
+}
+
+.contact-block .email {
+  color: inherit;
+  text-decoration: underline;
+}
+
+.contact-block .email:hover {
+  color: var(--accent);
+}
+
+/* Date Table */
+.date-table {
+  margin: var(--gap) 0;
+}
+
+.document-date {
+  font-family: var(--font-ui);
+  color: var(--muted);
+  font-size: 0.9rem;
+  padding: 0.5rem 0;
+}
+
+/* Recipient Table */
+.recipient-table {
+  margin: var(--gap) 0 var(--gap-lg) 0;
+  border-left: 3px solid var(--accent);
+  padding-left: 1rem;
+}
+
+.recipient-section {
+  padding: 0.5rem 0;
+}
+
+.recipient-position {
+  font-weight: 700;
+  color: var(--ink);
+  margin: 0 0 0.2rem 0;
+}
+
+.recipient-company {
+  font-family: var(--font-ui);
+  color: var(--ink);
+  margin: 0.2rem 0 0.3rem 0;
+  font-weight: 600;
+}
+
+.recipient-address {
+  color: var(--muted);
+  line-height: 1.5;
+  margin: 0.3rem 0 0 0;
+  font-size: 0.95rem;
+}
+
+/* Letter Content Table */
+.letter-table {
+  margin-top: var(--gap-lg);
+}
+
+.letter-table td {
+  padding: 0 0 1rem 0;
+}
+
+/* Salutation */
+.salutation {
+  font-weight: 600;
+  color: var(--ink);
+}
+
+/* Introduction */
+.introduction {
+  line-height: var(--line);
+}
+
+/* Experience Section */
+.experience-section {
+  padding: 0.5rem 0;
+}
+
+.experience-table {
+  width: 100%;
+}
+
+.experience-block {
+  padding: 0.5rem 0;
+}
+
+.experience-employer {
+  margin: 0 0 0.25rem 0;
+  color: var(--ink);
+}
+
+.experience-employer strong {
+  font-weight: 700;
+}
+
+/* Achievements List */
+.achievements {
+  margin: 0.25rem 0 0.5rem 1.5rem;
+  padding: 0;
+  list-style-type: square;
+}
+
+.achievement {
+  margin: 0.2rem 0;
+  line-height: var(--line);
+  color: var(--ink);
+}
+
+/* Motivation */
+.motivation {
+  line-height: var(--line);
+}
+
+/* Closing */
+.closing {
+  line-height: var(--line);
+}
+
+/* Signature */
+.signature {
+  margin-top: 2rem;
+  font-weight: 700;
+  color: var(--ink);
+  font-family: var(--font-ui);
+  text-align: left;
+}
+
+/* Print Optimization */
+@media print {
+  .classic-document {
+    padding: 0;
+    max-width: none;
+    margin: 0 2cm;
+  }
+
+  .header-table {
+    border-bottom: 2px solid #000;
+  }
+
+  .contact-block .email {
+    color: inherit;
+    text-decoration: none;
+  }
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+  .classic-document {
+    padding: 1rem 0.75rem;
+  }
+
+  .applicant-name {
+    font-size: 1.5rem;
+  }
+
+  .recipient-table {
+    padding-left: 0.75rem;
+  }
+}

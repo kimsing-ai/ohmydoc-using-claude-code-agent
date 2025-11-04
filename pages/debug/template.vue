@@ -6,8 +6,8 @@
         <div class="header-content">
           <h1 class="page-title">Template Renderer Demo</h1>
           <p class="page-description">
-            Testing the Modern template with comprehensive sample data.
-            This page demonstrates template rendering capabilities in isolation.
+            Test and compare all available templates with comprehensive sample data.
+            Switch between templates or view all templates side-by-side for comparison.
           </p>
         </div>
       </UContainer>
@@ -15,16 +15,70 @@
 
     <!-- Template Preview Section -->
     <UContainer>
-      <div class="template-info">
-        <UBadge color="blue" variant="subtle" size="lg">
-          Active Template: {{ templateMetadata.displayName }}
-        </UBadge>
-        <p class="template-description">{{ templateMetadata.description }}</p>
+      <!-- Template Selection Controls -->
+      <div class="template-controls">
+        <div class="control-section">
+          <label for="template-select" class="control-label">Select Template:</label>
+          <USelectMenu
+            id="template-select"
+            v-model="selectedTemplate"
+            :options="templateOptions"
+            value-attribute="value"
+            option-attribute="label"
+            class="template-select"
+          />
+        </div>
+
+        <div class="control-section">
+          <UButton
+            :color="viewMode === 'single' ? 'primary' : 'gray'"
+            variant="solid"
+            @click="viewMode = 'single'"
+          >
+            Single View
+          </UButton>
+          <UButton
+            :color="viewMode === 'comparison' ? 'primary' : 'gray'"
+            variant="solid"
+            @click="viewMode = 'comparison'"
+          >
+            Side-by-Side Comparison
+          </UButton>
+        </div>
       </div>
 
-      <!-- Render the active template with sample data -->
-      <div class="template-preview">
-        <component :is="activeTemplateComponent" :data="sampleData" />
+      <!-- Single Template View -->
+      <div v-if="viewMode === 'single'" class="single-view">
+        <div class="template-info">
+          <UBadge color="blue" variant="subtle" size="lg">
+            {{ currentTemplateMetadata.displayName }}
+          </UBadge>
+          <p class="template-description">{{ currentTemplateMetadata.description }}</p>
+        </div>
+
+        <div class="template-preview">
+          <component :is="currentTemplateComponent" :data="sampleData" />
+        </div>
+      </div>
+
+      <!-- Side-by-Side Comparison View -->
+      <div v-else class="comparison-view">
+        <div
+          v-for="template in allTemplates"
+          :key="template.name"
+          class="comparison-column"
+        >
+          <div class="template-info">
+            <UBadge color="blue" variant="subtle" size="md">
+              {{ template.metadata.displayName }}
+            </UBadge>
+            <p class="template-description">{{ template.metadata.description }}</p>
+          </div>
+
+          <div class="template-preview">
+            <component :is="template.component" :data="sampleData" />
+          </div>
+        </div>
       </div>
 
       <!-- Debug Information -->
@@ -37,8 +91,10 @@
           <div class="debug-section">
             <h3>Template System</h3>
             <ul>
-              <li><strong>Active Template:</strong> {{ activeTemplate }}</li>
+              <li><strong>Active Template (app-wide):</strong> {{ activeTemplate }}</li>
+              <li><strong>Selected Template (this page):</strong> {{ selectedTemplate }}</li>
               <li><strong>Available Templates:</strong> {{ availableTemplates.join(', ') }}</li>
+              <li><strong>View Mode:</strong> {{ viewMode }}</li>
             </ul>
           </div>
 
@@ -53,27 +109,80 @@
 </template>
 
 <script setup lang="ts">
+import { ref, computed } from 'vue'
 import { useTemplate } from '~/composables/useTemplate'
 import type { ParsedData } from '~/composables/useXmlParser'
+import CoverLetterModern from '~/templates/modern/CoverLetterModern.vue'
+import CoverLetterClassic from '~/templates/classic/CoverLetterClassic.vue'
+import CoverLetterMinimal from '~/templates/minimal/CoverLetterMinimal.vue'
 
 /**
  * Debug Template Page
  *
- * This page demonstrates the Modern template rendering with comprehensive
+ * This page demonstrates all available templates with comprehensive
  * sample data covering all template sections and edge cases.
+ * Includes template selection and side-by-side comparison features.
  */
 
-// Get the active template from the template system
-const {
-  getCurrentTemplate,
-  getCurrentTemplateMetadata,
-  getAvailableTemplates,
-  activeTemplate,
-} = useTemplate()
+// Get template system active template name
+const { activeTemplate } = useTemplate()
 
-const activeTemplateComponent = getCurrentTemplate()
-const templateMetadata = getCurrentTemplateMetadata()
-const availableTemplates = getAvailableTemplates()
+// View mode: 'single' or 'comparison'
+const viewMode = ref<'single' | 'comparison'>('single')
+
+// Selected template for single view
+const selectedTemplate = ref(activeTemplate)
+
+// All available templates with their components and metadata
+const allTemplates = [
+  {
+    name: 'modern',
+    component: CoverLetterModern,
+    metadata: {
+      name: 'modern',
+      displayName: 'Modern',
+      description: 'Professional cover letter template with modern styling and clean typography',
+    },
+  },
+  {
+    name: 'classic',
+    component: CoverLetterClassic,
+    metadata: {
+      name: 'classic',
+      displayName: 'Classic',
+      description: 'Traditional cover letter with table-based layout and formal styling',
+    },
+  },
+  {
+    name: 'minimal',
+    component: CoverLetterMinimal,
+    metadata: {
+      name: 'minimal',
+      displayName: 'Minimal',
+      description: 'Clean, minimalist cover letter design with simple structure and generous whitespace',
+    },
+  },
+]
+
+// Template options for dropdown
+const templateOptions = allTemplates.map(t => ({
+  value: t.name,
+  label: t.metadata.displayName,
+}))
+
+// Get current template component and metadata based on selection
+const currentTemplateComponent = computed(() => {
+  const template = allTemplates.find(t => t.name === selectedTemplate.value)
+  return template?.component || CoverLetterModern
+})
+
+const currentTemplateMetadata = computed(() => {
+  const template = allTemplates.find(t => t.name === selectedTemplate.value)
+  return template?.metadata || allTemplates[0].metadata
+})
+
+// Available template names for debug info
+const availableTemplates = allTemplates.map(t => t.name)
 
 /**
  * Comprehensive sample data covering all template sections
@@ -187,11 +296,56 @@ useHead({
   max-width: 600px;
 }
 
+.template-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background: white;
+  border-radius: 0.5rem;
+  border: 1px solid var(--color-gray-200);
+}
+
+.control-section {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.control-label {
+  font-weight: 600;
+  color: var(--color-gray-700);
+  font-size: 0.95rem;
+}
+
+.template-select {
+  min-width: 200px;
+}
+
+.single-view {
+  margin-bottom: 2rem;
+}
+
+.comparison-view {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.comparison-column {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
 .template-info {
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   padding: 1rem;
   background: white;
   border-radius: 0.5rem;
@@ -270,6 +424,19 @@ useHead({
 
   .template-preview {
     padding: 1rem;
+  }
+
+  .comparison-view {
+    grid-template-columns: 1fr;
+  }
+
+  .control-section {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .template-select {
+    width: 100%;
   }
 }
 </style>
