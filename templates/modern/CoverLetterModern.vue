@@ -113,14 +113,20 @@ interface Props {
 defineProps<Props>()
 </script>
 
-<style>
+<style scoped src="./styles.css">
 /**
  * Modern Template Styles
  *
- * NOTE: This style block does NOT use 'scoped' attribute because Vite/Nuxt
- * does not properly resolve @import paths in scoped style blocks during production builds.
- * However, all classes are namespaced (e.g., .application-document) so they won't
- * conflict with other components. This maintains CSS separation as required by PRD.md.
+ * Uses Vue's src attribute to import external CSS with scoping enabled.
+ * This approach maintains CSS separation (PRD requirement) while ensuring
+ * Vue's scoped CSS mechanism properly processes the styles in both
+ * development and production builds.
+ *
+ * IMPORTANT: Using @import inside <style scoped> blocks does NOT work
+ * reliably in Vite production builds because Vue's scoped CSS compiler
+ * cannot process external imports to add scoping attributes. The src
+ * attribute is the official Vue syntax for importing external CSS with scoping.
+ *
+ * Reference: Vue SFC Specification - <style> Block with src attribute
  */
-@import './styles.css';
 </style>

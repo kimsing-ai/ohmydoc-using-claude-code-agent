@@ -176,10 +176,42 @@ The parser in `useXmlParser.ts` transforms this into a typed JavaScript object t
 
 To add a new template (e.g., "elegant"):
 
-1. Create directory: `templates/elegant/`
-2. Create `CoverLetterElegant.vue` with same Props interface as existing templates
-3. Create `styles.css` with template-specific styling
-4. Import and register in `composables/useTemplate.ts`:
+1. **Create directory**: `templates/elegant/`
+
+2. **Create `CoverLetterElegant.vue`** with same Props interface as existing templates:
+   ```vue
+   <template>
+     <article class="application-document">
+       <!-- Your template HTML here -->
+     </article>
+   </template>
+
+   <script setup lang="ts">
+   import type { ParsedData } from '~/composables/useXmlParser'
+
+   interface Props {
+     data: ParsedData
+   }
+
+   defineProps<Props>()
+   </script>
+
+   <style scoped src="./styles.css">
+   /**
+    * IMPORTANT: Use src attribute, NOT @import, for external CSS.
+    *
+    * ❌ WRONG: <style scoped>@import './styles.css';</style>
+    * ✅ CORRECT: <style scoped src="./styles.css"></style>
+    *
+    * Reason: @import inside scoped styles doesn't work in Vite production builds.
+    * The src attribute is Vue's official way to import external CSS with scoping.
+    */
+   </style>
+   ```
+
+3. **Create `styles.css`** with template-specific styling (see `docs/sample/styles.css` for reference)
+
+4. **Import and register** in `composables/useTemplate.ts`:
    ```typescript
    import ElegantTemplate from '~/templates/elegant/CoverLetterElegant.vue';
 
@@ -192,7 +224,7 @@ To add a new template (e.g., "elegant"):
    const ACTIVE_TEMPLATE = 'elegant';  // Switch here
    ```
 
-Templates must accept Props interface matching the parsed XML data structure (see PRD.md section 5.2.3).
+Templates must accept Props interface matching the parsed XML data structure (see PRD.md section 5.2.3 and DECISIONS.md Decision 12).
 
 ## Styling Strategy
 
