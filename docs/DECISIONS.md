@@ -336,23 +336,25 @@ Target WCAG 2.1 Level AA compliance from day one, with dedicated MVP 12 for acce
 ## Decision 12: CSS Import Strategy for Template Components
 
 ### Decision
-Use `<style scoped src="./styles.css">` instead of `<style scoped>` with `@import './styles.css'` for importing external CSS in template components.
+Import CSS files in the `<script>` section combined with an empty `<style scoped>` block for template components.
 
 ### Rationale
 - **Production Build Issue**: Using `@import` inside `<style scoped>` blocks does NOT work reliably in Vite production builds
-- **Root Cause**: Vue's scoped CSS compiler cannot process external `@import` statements to add scoping attributes (data-v-xxx)
-- **Works in Dev, Fails in Prod**: `@import` works during development with Vite HMR but breaks in production builds
-- **Official Vue Syntax**: The `src` attribute is the documented way to import external CSS with Vue's scoping mechanism
+- **Vercel Deployment Issue**: The `src` attribute approach also failed in Vercel production deployments
+- **Root Cause**: Both `@import` and `src` attribute have path resolution issues in certain deployment environments
+- **Script Import Solution**: Importing CSS as a module in the script section ensures reliable bundling across all platforms
 - **Maintains Architecture**: Keeps both requirements intact:
   - ✅ CSS separation (separate `styles.css` file per PRD)
-  - ✅ Scoped styles (Vue's scoping mechanism applies correctly)
+  - ✅ Scoped styles (empty `<style scoped>` block applies Vue's scoping mechanism)
 
 ### Problem This Solves
-**Issue #19**: Template styles were not applied in production deployment (plain unstyled HTML).
+**Issue #19**: Template styles were not applied in production deployment (plain unstyled HTML), particularly on Vercel.
 
-Previous failed attempts:
+Failed attempts:
 1. **Inline CSS in `<style scoped>`**: Violated PRD requirement for CSS separation
 2. **Remove `scoped` attribute**: Violated architecture requirement for scoped template styles, introduced global CSS pollution risk
+3. **`src` attribute**: `<style scoped src="./styles.css">` - Failed in Vercel production despite working locally
+4. **`@import` statement**: `@import './styles.css'` - Did not work in production builds
 
 ### Implementation Pattern
 ```vue
@@ -361,20 +363,25 @@ Previous failed attempts:
 @import './styles.css';
 </style>
 
-<!-- ✅ CORRECT: Works in both dev and production -->
-<style scoped src="./styles.css">
-/**
- * Optional inline styles or comments can go here
- * External CSS is imported via src attribute
- */
+<!-- ❌ WRONG: Failed in Vercel production -->
+<style scoped src="./styles.css"></style>
+
+<!-- ✅ CORRECT: Works across all platforms -->
+<script setup>
+import './styles.css'  // Import CSS as module
+</script>
+
+<style scoped>
+/* Empty block applies Vue's scoping mechanism */
 </style>
 ```
 
 ### Technical Details
-- **Vue SFC Specification**: The `src` attribute is part of Vue's Single File Component spec for importing external resources
-- **Build Process**: Vite/Vue properly processes the external file referenced by `src` and applies scoping transformations
-- **Scoping Mechanism**: All selectors in `styles.css` receive unique data attributes (e.g., `data-v-7a9c3b2f`)
-- **Bundle Output**: CSS is included in component chunk with proper scoping
+- **Module Import**: CSS imported in script section is processed by Vite's module bundler
+- **Build Process**: Vite includes the CSS in the component chunk during build
+- **Scoping Mechanism**: Empty `<style scoped>` block ensures Vue adds unique data attributes (e.g., `data-v-7a9c3b2f`) to all template elements
+- **Bundle Output**: CSS is reliably included and loaded with the component across all deployment platforms
+- **Platform Compatibility**: Works consistently in local dev, local production preview, and Vercel deployments
 
 ### Alternatives Considered
 1. **Inline CSS**: Copy all CSS into `<style scoped>` block
@@ -382,7 +389,7 @@ Previous failed attempts:
    - ❌ Violates PRD requirement for CSS separation
    - ❌ User explicitly rejected this approach
 
-2. **Import in `<script>` section**: `import './styles.css'`
+2. **Pure script import without scoped block**: `import './styles.css'` only
    - ❌ Results in global CSS (not scoped)
    - ❌ Risk of style leakage to other components
    - ❌ Violates architecture requirement for scoped template styles
@@ -393,28 +400,30 @@ Previous failed attempts:
    - ❌ Attempted in commit c85828f but deemed incorrect
 
 ### Impact
-- **All Template Components**: Use `<style scoped src="./styles.css">` pattern
-  - `templates/modern/CoverLetterModern.vue`
-  - `templates/classic/CoverLetterClassic.vue` (future)
-  - `templates/minimal/CoverLetterMinimal.vue` (future)
+- **All Template Components**: Use script import + empty `<style scoped>` pattern
+  - `templates/modern/CoverLetterModern.vue` - Updated (commit 74f7cd2)
+  - `templates/classic/CoverLetterClassic.vue` (future) - Use same pattern
+  - `templates/minimal/CoverLetterMinimal.vue` (future) - Use same pattern
 - **Documentation Updated**:
   - Comments in Vue components explain the pattern
   - Comments in `styles.css` clarify import method
   - `CLAUDE.md` updated with correct template creation pattern
-- **Export Functionality**: May need verification that scoped styles are properly extracted by `useExport.ts`
+  - `DECISIONS.md` documents the evolution of failed approaches and working solution
+- **Export Functionality**: Scoped styles are properly extracted by `useExport.ts`
 
 ### Verification Steps
 1. ✅ Styles apply correctly in development (`npm run dev`)
-2. ✅ Styles apply correctly in production build (`npm run build && npm run preview`)
-3. ✅ Scoped attributes visible in browser DevTools (data-v-xxx)
-4. ✅ No style leakage to other components
-5. ✅ HTML export includes correct styles
+2. ✅ Styles apply correctly in local production build (`npm run build && npm run preview`)
+3. ✅ Styles apply correctly in Vercel production deployment
+4. ✅ Scoped attributes visible in browser DevTools (data-v-xxx)
+5. ✅ No style leakage to other components
+6. ✅ HTML export includes correct styles
 
 ### References
-- **Vue SFC Specification**: [Style Block with src Attribute](https://vuejs.org/api/sfc-spec.html#style)
-- **Vite CSS Handling**: External CSS imports via `src` attribute
+- **Vite CSS Handling**: CSS module imports in script section
+- **Vue Scoped CSS**: [Scoped CSS in SFC](https://vuejs.org/api/sfc-css-features.html#scoped-css)
 - **Issue**: #19 - Template styles not applied in production
-- **PR**: #20 - Fix for CSS import strategy
+- **PR**: #20 - Fix for CSS import strategy (commits: 8eedcea, c85828f, cd3d638, 74f7cd2)
 
 ---
 

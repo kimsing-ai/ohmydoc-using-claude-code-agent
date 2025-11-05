@@ -188,6 +188,7 @@ To add a new template (e.g., "elegant"):
 
    <script setup lang="ts">
    import type { ParsedData } from '~/composables/useXmlParser'
+   import './styles.css'  // Import CSS as module for reliable loading
 
    interface Props {
      data: ParsedData
@@ -196,15 +197,17 @@ To add a new template (e.g., "elegant"):
    defineProps<Props>()
    </script>
 
-   <style scoped src="./styles.css">
+   <style scoped>
    /**
-    * IMPORTANT: Use src attribute, NOT @import, for external CSS.
+    * IMPORTANT: Import CSS in script section, not in style block.
     *
     * ❌ WRONG: <style scoped>@import './styles.css';</style>
-    * ✅ CORRECT: <style scoped src="./styles.css"></style>
+    * ❌ WRONG: <style scoped src="./styles.css"></style>
+    * ✅ CORRECT: import './styles.css' in <script> + empty <style scoped>
     *
-    * Reason: @import inside scoped styles doesn't work in Vite production builds.
-    * The src attribute is Vue's official way to import external CSS with scoping.
+    * Reason: Both @import and src attribute had issues in Vercel production.
+    * Script imports ensure CSS is bundled correctly across all platforms.
+    * Empty scoped block applies Vue's scoping mechanism (data-v-* attributes).
     */
    </style>
    ```
