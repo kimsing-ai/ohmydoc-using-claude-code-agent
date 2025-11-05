@@ -172,9 +172,29 @@ The application expects this XML structure:
 
 The parser in `useXmlParser.ts` transforms this into a typed JavaScript object that templates consume via props.
 
-## Adding New Templates
+## Template System (MVP 11)
 
-To add a new template (e.g., "elegant"):
+### Available Templates
+
+The application now includes three templates demonstrating different layout approaches:
+
+1. **Modern** (default): Professional design using semantic HTML (`<article>`, `<header>`) with modern styling
+2. **Classic**: Traditional table-based layout with uppercase headers and formal styling
+3. **Minimal**: Clean, minimalist design with simple div structure and generous whitespace
+
+All templates:
+- Accept the same `ParsedData` props interface for consistency
+- Use only scoped CSS (no @nuxt/ui dependencies)
+- Are exportable as standalone HTML
+- Render the same XML data with different visual presentations
+
+### Testing Templates
+
+Visit `/debug/template` to:
+- Switch between templates using the dropdown selector
+- View all templates side-by-side for comparison
+- See how the same XML data renders across different templates
+- Debug template rendering with comprehensive sample data
 
 1. **Create directory**: `templates/elegant/`
 
@@ -215,19 +235,107 @@ To add a new template (e.g., "elegant"):
 3. **Create `styles.css`** with template-specific styling (see `docs/sample/styles.css` for reference)
 
 4. **Import and register** in `composables/useTemplate.ts`:
+### Switching the Active Template
+
+To change the template used throughout the application:
+
+1. Open `composables/useTemplate.ts`
+2. Modify the `ACTIVE_TEMPLATE` constant:
    ```typescript
-   import ElegantTemplate from '~/templates/elegant/CoverLetterElegant.vue';
+   const ACTIVE_TEMPLATE = 'modern'  // Options: 'modern', 'classic', 'minimal'
+   ```
+3. Save the file - the app will hot-reload with the new template
 
-   const templates = {
-     modern: ModernTemplate,
-     classic: ClassicTemplate,
-     elegant: ElegantTemplate
-   };
+### Adding New Templates
 
-   const ACTIVE_TEMPLATE = 'elegant';  // Switch here
+To add a new template (e.g., "elegant"):
+
+1. **Create directory structure**:
+   ```bash
+   mkdir -p templates/elegant
+   ```
+
+2. **Create the template component** (`templates/elegant/CoverLetterElegant.vue`):
+   ```vue
+   <template>
+     <div class="elegant-document">
+       <!-- Your HTML structure here -->
+       <h1>{{ data.applicant.name }}</h1>
+       <!-- ... more template code ... -->
+     </div>
+   </template>
+
+   <script setup lang="ts">
+   import type { ParsedData } from '~/composables/useXmlParser'
+
+   interface Props {
+     data: ParsedData
+   }
+
+   defineProps<Props>()
+   </script>
+
+   <style scoped>
+   @import './styles.css';
+   </style>
+   ```
+
+3. **Create the stylesheet** (`templates/elegant/styles.css`):
+   ```css
+   /* Use the design system variables */
+   :root {
+     --font-body: ui-serif, Georgia, "Times New Roman", Times, serif;
+     --ink: #111;
+     --muted: #555;
+     --accent: #0f6fec;
+   }
+
+   .elegant-document {
+     /* Your styles here */
+   }
    ```
 
 Templates must accept Props interface matching the parsed XML data structure (see PRD.md section 5.2.3 and DECISIONS.md Decision 12).
+4. **Register the template** in `composables/useTemplate.ts`:
+   ```typescript
+   import ElegantTemplate from '~/templates/elegant/CoverLetterElegant.vue'
+
+   const templates: TemplateRegistry = {
+     modern: { component: CoverLetterModern, metadata: {...} },
+     classic: { component: CoverLetterClassic, metadata: {...} },
+     minimal: { component: CoverLetterMinimal, metadata: {...} },
+     elegant: {
+       component: ElegantTemplate,
+       metadata: {
+         name: 'elegant',
+         displayName: 'Elegant',
+         description: 'Your template description here',
+       },
+     },
+   }
+   ```
+
+5. **Update the debug page** (`pages/debug/template.vue`):
+   Add your template to the `allTemplates` array so it appears in the template selector and comparison view.
+
+6. **Test your template**:
+   - Set `ACTIVE_TEMPLATE = 'elegant'` in `useTemplate.ts` to test in main app
+   - Visit `/debug/template` to test in isolation and compare with other templates
+   - Verify all XML sections render correctly
+   - Check responsive behavior and print styles
+
+### Template Requirements
+
+All templates **must**:
+- Accept `Props` interface with `data: ParsedData` property
+- Use scoped CSS only (no @nuxt/ui components)
+- Handle optional fields gracefully (use `v-if` for conditional rendering)
+- Be exportable as standalone HTML
+- Follow the design system color palette and typography
+- Include print-optimized styles (`@media print`)
+- Be responsive (`@media` queries for mobile)
+
+See existing templates (`CoverLetterModern.vue`, `CoverLetterClassic.vue`, `CoverLetterMinimal.vue`) as reference implementations.
 
 ## Styling Strategy
 
