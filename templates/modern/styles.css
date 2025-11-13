@@ -7,6 +7,12 @@
  *
  * This stylesheet uses ONLY scoped CSS (no @nuxt/ui, no Tailwind utilities)
  * to ensure the template is exportable as standalone HTML.
+ *
+ * IMPORT METHOD: This file is imported by CoverLetterModern.vue using:
+ * <style scoped src="./styles.css">
+ *
+ * Vue's scoped CSS compiler will process all selectors in this file and add
+ * unique data attributes (e.g., data-v-xxxxx) for component isolation.
  */
 
 /* CSS Custom Properties (Design System) */

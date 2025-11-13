@@ -196,6 +196,45 @@ Visit `/debug/template` to:
 - See how the same XML data renders across different templates
 - Debug template rendering with comprehensive sample data
 
+1. **Create directory**: `templates/elegant/`
+
+2. **Create `CoverLetterElegant.vue`** with same Props interface as existing templates:
+   ```vue
+   <template>
+     <article class="application-document">
+       <!-- Your template HTML here -->
+     </article>
+   </template>
+
+   <script setup lang="ts">
+   import type { ParsedData } from '~/composables/useXmlParser'
+   import './styles.css'  // Import CSS as module for reliable loading
+
+   interface Props {
+     data: ParsedData
+   }
+
+   defineProps<Props>()
+   </script>
+
+   <style scoped>
+   /**
+    * IMPORTANT: Import CSS in script section, not in style block.
+    *
+    * ❌ WRONG: <style scoped>@import './styles.css';</style>
+    * ❌ WRONG: <style scoped src="./styles.css"></style>
+    * ✅ CORRECT: import './styles.css' in <script> + empty <style scoped>
+    *
+    * Reason: Both @import and src attribute had issues in Vercel production.
+    * Script imports ensure CSS is bundled correctly across all platforms.
+    * Empty scoped block applies Vue's scoping mechanism (data-v-* attributes).
+    */
+   </style>
+   ```
+
+3. **Create `styles.css`** with template-specific styling (see `docs/sample/styles.css` for reference)
+
+4. **Import and register** in `composables/useTemplate.ts`:
 ### Switching the Active Template
 
 To change the template used throughout the application:
@@ -256,6 +295,7 @@ To add a new template (e.g., "elegant"):
    }
    ```
 
+Templates must accept Props interface matching the parsed XML data structure (see PRD.md section 5.2.3 and DECISIONS.md Decision 12).
 4. **Register the template** in `composables/useTemplate.ts`:
    ```typescript
    import ElegantTemplate from '~/templates/elegant/CoverLetterElegant.vue'
